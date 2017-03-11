@@ -8,13 +8,30 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 <script>
-	$(document).ready(function() {
-		$('.ui.dropdown').dropdown();
+	var startVal;
+	var destVal;
+	$(document).ready(
+			function() {
 
-		$('.link.example .dropdown').dropdown({
-			action : 'hide'
-		});
-	});
+				$('.ui.dropdown').dropdown(
+						{
+							onChange : function(value, text) {
+								if ($(this).attr('id') == "start")
+									startVal = value;
+								if ($(this).attr('id') == "dest")
+									destVal = value;
+								if (startVal != undefined
+										&& destVal != undefined) {
+									var link = document.createElement('a');
+									link.href = "map.html?map=Waypoints&start="
+											+ startVal + "&dest=" + destVal;
+									document.body.appendChild(link);
+									link.click();
+								}
+							}
+						});
+
+			});
 </script>
 <title>Welcome</title>
 <meta charset="utf-8" />
@@ -68,31 +85,44 @@ a, span {
 		<h1>First floor of Engineering College, section IM</h1>
 		<div>
 			<p>
-				Click here to navigate to <a href="map.html?map=BUN&entrance=1">maproom</a>.
+				Choose where you want to go.
 			</p>
 		</div>
-		<div class="ui hidden divider"></div>
-		<div class="ui floating dropdown button">
-			<div class="text">Destinatie</div>
-			<i class="dropdown icon"></i>
-			<div class="menu">
-				<a class="item" href="map.html?map=BUN&entrance=1&dest=layer2">
-					IE101</a> <a class="item"
-					href="map.html?map=BUN&entrance=1&dest=layer4"> IE102</a> <a
-					class="item" href="map.html?map=BUN&entrance=1&dest=layer5">
-					IE104</a> <a class="item"
-					href="map.html?map=BUN&entrance=1&dest=layer6"> IE105</a> <a
-					class="item" href="map.html?map=BUN&entrance=1&dest=layer3">
-					Butean's Lair</a> <a class="item"
-					href="map.html?map=BUN&entrance=1&dest=layer7"> WC_F</a> <a
-					class="item" href="map.html?map=BUN&entrance=1&dest=layer8">
-					WC_B</a> <a class="item" href="map.html?map=BUN&entrance=1&dest=layer9">
-					IE111</a> <a class="item"
-					href="map.html?map=BUN&entrance=1&dest=layer10"> IE112</a> <a
-					class="item" href="map.html?map=BUN&entrance=1&dest=layer11">
-					IE113</a>
-			</div>
+		<div id="start" class="ui selection dropdown">
+		<input type="hidden">
+		<div class="default text">Start</div>
+		<i class="dropdown icon"></i>
+		<div class="menu">
+			<div class="item" data-value="start">Intrare</div>
+			<div class="item" data-value="ie101">IE101</div>
+			<div class="item" data-value="ie102">IE102</div>
+			<div class="item" data-value="ie104">IE104</div>
+			<div class="item" data-value="butean">Lab. Butean</div>
+			<div class="item" data-value="wcm">WC B</div>
+			<div class="item" data-value="wcf">WC F</div>
+			<div class="item" data-value="ie111">IE111</div>
+			<div class="item" data-value="ie112">IE112</div>
+			<div class="item" data-value="ie113">IE113</div>
 		</div>
+	</div>
+
+	<div id="dest" class="ui selection dropdown">
+		<input type="hidden">
+		<div class="default text">Destinatie</div>
+		<i class="dropdown icon"></i>
+		<div class="menu">
+			<div class="item" data-value="start">Intrare</div>
+			<div class="item" data-value="ie101">IE101</div>
+			<div class="item" data-value="ie102">IE102</div>
+			<div class="item" data-value="ie104">IE104</div>
+			<div class="item" data-value="butean">Lab. Butean</div>
+			<div class="item" data-value="wcm">WC B</div>
+			<div class="item" data-value="wcf">WC F</div>
+			<div class="item" data-value="ie111">IE111</div>
+			<div class="item" data-value="ie112">IE112</div>
+			<div class="item" data-value="ie113">IE113</div>
+		</div>
+	</div>
 	</article>
 </body>
 </html>

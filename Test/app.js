@@ -249,7 +249,7 @@
     //  btnMap.classList.remove("column-25");
     //  btnInfo.classList.add("column-33");
     //  btnInfo.classList.remove("column-25");
-    }
+    } 
   }
 
   function checkLockable() {

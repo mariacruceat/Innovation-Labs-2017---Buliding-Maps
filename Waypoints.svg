@@ -26,10 +26,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.95438988"
-     inkscape:cx="525.18594"
+     inkscape:cx="557.14353"
      inkscape:cy="423.30709"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="true"
      units="mm"
      borderlayer="false"
@@ -1314,20 +1314,6 @@
          x="192.19504"
          y="192.20422"
          style="stroke-width:0.20848681">IE113</tspan></text>
-    <circle
-       style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="w7"
-       cx="197.49998"
-       cy="149.5"
-       r="2.5"
-       inkscape:label="#path5046" />
-    <circle
-       style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="w2"
-       cx="71.779068"
-       cy="190.36047"
-       r="2.5"
-       inkscape:label="#path5038-3" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:6.75091314px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.16877283"
@@ -1356,7 +1342,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="Waypoints">
+     inkscape:label="Waypoints"
+     style="display:none">
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="ie101"
@@ -1462,5 +1449,21 @@
        cy="72.31395"
        r="2.5"
        inkscape:label="#path5038-7" />
+    <circle
+       transform="translate(0,-73)"
+       style="display:inline;opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="w2"
+       cx="71.779068"
+       cy="190.36047"
+       r="2.5"
+       inkscape:label="#path5038-3" />
+    <circle
+       transform="translate(0,-73)"
+       style="display:inline;opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="w7"
+       cx="197.49998"
+       cy="149.5"
+       r="2.5"
+       inkscape:label="#path5046" />
   </g>
 </svg>

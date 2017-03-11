@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 	$( "#mapContainer" ).load($_GET["map"] + '.svg', function(){
-		$('#layer6').toggle(true);
+		$('#' + $_GET["dest"]).toggle(true);
 	});
 });
 

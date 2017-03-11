@@ -1,0 +1,46 @@
+a.expanding {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
+    text-decoration: none;
+    color: #4183C4;
+    background: transparent none repeat scroll 0px 0px;
+    transition: color 0.2s ease 0s
+}
+a.expanding:hover {
+    color: #0064B4;
+}
+a.expanding:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0px;
+    background: transparent;
+    background: #5b86ff;
+    transition: width .3s ease, background-color .3s ease;
+}
+a.expanding:hover:after {
+    width: 100%;
+}
+
+#bigMenu {
+    visibility: visible;
+    display: flex;
+}
+#smallMenu {
+    visibility: hidden;
+    display: none;
+}
+            
+@media screen and (max-width: 770px) {
+    #bigMenu {
+        visibility: hidden;
+        display: none;
+    }
+    #smallMenu {
+        visibility: visible;
+        display: flex;
+    }
+}

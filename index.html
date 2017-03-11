@@ -10,9 +10,18 @@
 <script>
 	var startVal;
 	var destVal;
+	var $_GET = {};
+
+	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+	    function decode(s) {
+	        return decodeURIComponent(s.split("+").join(" "));
+	    }
+
+	    $_GET[decode(arguments[1])] = decode(arguments[2]);
+	});
+
 	$(document).ready(
 			function() {
-
 				$('.ui.dropdown').dropdown(
 						{
 							onChange : function(value, text) {
@@ -30,7 +39,13 @@
 								}
 							}
 						});
-
+				var s = $("div[data-slide='" + $_GET["start"] + "']");
+				$("#start").dropdown("set selected", $_GET["start"]);
+				$("#start").dropdown("set value", s.html());
+				var d = $("div[data-slide='" + $_GET["dest"] + "']");
+				$("#dest").dropdown("set selected", $_GET["dest"]);
+				$("#dest").dropdown("set value", d.html());
+				$('.ui.dropdown').dropdown('refresh');
 			});
 </script>
 <title>Welcome</title>

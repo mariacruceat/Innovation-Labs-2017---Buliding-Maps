@@ -205,13 +205,13 @@
       // device can't show heading
 
       //positionHng.textContent = "n/a";
-      showHeadingWarning();
+      //showHeadingWarning();
     }
   }
 
   function showHeadingWarning() {
     if (!warningHeadingShown) {
-      popupOpen("noorientation");
+     // popupOpen("noorientation");
       warningHeadingShown = true;
     }
   }
@@ -232,7 +232,7 @@
     isOrientationLockable = lockable;
 
     if (isOrientationLockable) {
-      btnLockOrientation.classList.remove("btn--hide");
+      //btnLockOrientation.classList.remove("btn--hide");
 
       btnNightmode.classList.add("column-25");
       btnNightmode.classList.remove("column-33");
@@ -241,14 +241,14 @@
       btnInfo.classList.add("column-25");
       btnInfo.classList.remove("column-33");
     } else {
-      btnLockOrientation.classList.add("btn--hide");
+      //btnLockOrientation.classList.add("btn--hide");
 
-      btnNightmode.classList.add("column-33");
-      btnNightmode.classList.remove("column-25");
-      btnMap.classList.add("column-33");
-      btnMap.classList.remove("column-25");
-      btnInfo.classList.add("column-33");
-      btnInfo.classList.remove("column-25");
+      //btnNightmode.classList.add("column-33");
+      //btnNightmode.classList.remove("column-25");
+     // btnMap.classList.add("column-33");
+    //  btnMap.classList.remove("column-25");
+    //  btnInfo.classList.add("column-33");
+    //  btnInfo.classList.remove("column-25");
     }
   }
 
@@ -303,8 +303,8 @@
     positionCurrent.lat = position.coords.latitude;
     positionCurrent.lng = position.coords.longitude;
 
-    positionLat.textContent = decimalToSexagesimal(positionCurrent.lat, "lat");
-    positionLng.textContent = decimalToSexagesimal(positionCurrent.lng, "lng");
+    //positionLat.textContent = decimalToSexagesimal(positionCurrent.lat, "lat");
+    //positionLng.textContent = decimalToSexagesimal(positionCurrent.lng, "lng");
   }
 
   function locationUpdateFail(error) {
@@ -350,9 +350,9 @@
     for (i=0; i<popupInners.length; i++) {
       popupInners[i].classList.add("popup__inner--hide");
     }
-    document.getElementById("popup-inner-" + name).classList.remove("popup__inner--hide");
+   // document.getElementById("popup-inner-" + name).classList.remove("popup__inner--hide");
 
-    popup.classList.add("popup--show");
+    //popup.classList.add("popup--show");
   }
 
   function popupClose() {
@@ -401,16 +401,16 @@
   document.addEventListener("MSFullscreenChange", onFullscreenChange);
 
   //btnLockOrientation.addEventListener("click", toggleOrientationLock);
-  btnNightmode.addEventListener("click", toggleNightmode);
-  btnMap.addEventListener("click", openMap);
+  //btnNightmode.addEventListener("click", toggleNightmode);
+  //btnMap.addEventListener("click", openMap);
 
-  var i;
-  for (i=0; i<btnsPopup.length; i++) {
-    btnsPopup[i].addEventListener("click", popupOpenFromClick);
-  }
+ // var i;
+ // for (i=0; i<btnsPopup.length; i++) {
+ //   btnsPopup[i].addEventListener("click", popupOpenFromClick);
+ // }
 
-  popup.addEventListener("click", popupClose);
-  popupContents.addEventListener("click", popupContentsClick);
+ // popup.addEventListener("click", popupClose);
+  //popupContents.addEventListener("click", popupContentsClick);
 
   navigator.geolocation.watchPosition(locationUpdate, locationUpdateFail, {
     enableHighAccuracy: false,
@@ -418,7 +418,7 @@
     timeout: 27000
   });
 
-  setNightmode(false);
+  //setNightmode(false);
   checkLockable();
 
 }());

@@ -1,5 +1,7 @@
 $( document ).ready(function() {
-	$( "#mapContainer" ).load($_GET["map"] + '.svg');
+	$( "#mapContainer" ).load($_GET["map"] + '.svg', function(){
+		$('#' + $_GET["dest"]).toggle(true);
+	});
 });
 
 var $_GET = {};

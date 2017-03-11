@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.63206019"
-     inkscape:cx="-26.695802"
-     inkscape:cy="389.4953"
+     inkscape:zoom="0.95438988"
+     inkscape:cx="493.22835"
+     inkscape:cy="423.30709"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="true"
      units="mm"
      borderlayer="false"
@@ -59,7 +59,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1316,16 +1316,18 @@
          style="stroke-width:0.20848681">IE113</tspan></text>
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5046"
+       id="W7"
        cx="197.49998"
        cy="149.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5046" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5038-3"
+       id="W2"
        cx="71.779068"
        cy="190.36047"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5038-3" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1347,46 +1349,53 @@
        inkscape:label="#path5016" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5018"
+       id="IE104"
        cx="52.5"
        cy="41.499996"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5018" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5020"
+       id="Butean"
        cx="132.5"
        cy="76.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5020" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5022"
+       id="WCM"
        cx="162.5"
        cy="76.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5022" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5024"
+       id="WCF"
        cx="177.5"
        cy="76.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5024" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5026"
+       id="IE111"
        cx="192.5"
        cy="116.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5026" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5028"
+       id="IE112"
        cx="202.49998"
        cy="121.49999"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5028" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5030"
+       id="IE113"
        cx="197.49998"
        cy="131.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5030" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="Start"
@@ -1396,28 +1405,32 @@
        inkscape:label="#path5032" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5034"
+       id="W1"
        cx="95.5"
        cy="120.63955"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5034" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5036"
+       id="IE105"
        cx="112.49999"
        cy="146.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5036" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5038"
+       id="W5"
        cx="101.77907"
        cy="72.732559"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5038" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5040"
+       id="W6"
        cx="132.5"
        cy="66.5"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5040" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path5044"
@@ -1426,9 +1439,10 @@
        r="2.5" />
     <circle
        style="opacity:1;fill:#ff2a2a;fill-opacity:1;stroke:#ff0000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path5038-7"
+       id="W4"
        cx="59.476742"
        cy="72.31395"
-       r="2.5" />
+       r="2.5"
+       inkscape:label="#path5038-7" />
   </g>
 </svg>

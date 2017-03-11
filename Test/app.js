@@ -204,7 +204,7 @@
     } else {
       // device can't show heading
 
-      positionHng.textContent = "n/a";
+      //positionHng.textContent = "n/a";
       showHeadingWarning();
     }
   }
@@ -400,7 +400,7 @@
   document.addEventListener("mozfullscreenchange", onFullscreenChange);
   document.addEventListener("MSFullscreenChange", onFullscreenChange);
 
-  btnLockOrientation.addEventListener("click", toggleOrientationLock);
+  //btnLockOrientation.addEventListener("click", toggleOrientationLock);
   btnNightmode.addEventListener("click", toggleNightmode);
   btnMap.addEventListener("click", openMap);
 

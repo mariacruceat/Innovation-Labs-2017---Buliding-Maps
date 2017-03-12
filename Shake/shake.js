@@ -24,7 +24,7 @@
 
         this.options = {
             threshold: 10, //default velocity threshold for shake to register
-            timeout: 1 //default interval between events
+            timeout: 500 //default interval between events
         };
 
         if (typeof options === 'object') {

@@ -204,15 +204,8 @@
     } else {
       // device can't show heading
 
-      //positionHng.textContent = "n/a";
-      //showHeadingWarning();
-    }
-  }
-
-  function showHeadingWarning() {
-    if (!warningHeadingShown) {
-     // popupOpen("noorientation");
-      warningHeadingShown = true;
+      positionHng.textContent = "n/a";
+      showHeadingWarning();
     }
   }
 
@@ -226,30 +219,6 @@
     } else {
       lockOrientationRequest(false);
     }
-  }
-
-  function toggleOrientationLockable(lockable) {
-    isOrientationLockable = lockable;
-
-    if (isOrientationLockable) {
-      //btnLockOrientation.classList.remove("btn--hide");
-
-      btnNightmode.classList.add("column-25");
-      btnNightmode.classList.remove("column-33");
-      btnMap.classList.add("column-25");
-      btnMap.classList.remove("column-33");
-      btnInfo.classList.add("column-25");
-      btnInfo.classList.remove("column-33");
-    } else {
-      //btnLockOrientation.classList.add("btn--hide");
-
-      //btnNightmode.classList.add("column-33");
-      //btnNightmode.classList.remove("column-25");
-     // btnMap.classList.add("column-33");
-    //  btnMap.classList.remove("column-25");
-    //  btnInfo.classList.add("column-33");
-    //  btnInfo.classList.remove("column-25");
-    } 
   }
 
   function checkLockable() {
@@ -303,65 +272,14 @@
     positionCurrent.lat = position.coords.latitude;
     positionCurrent.lng = position.coords.longitude;
 
-    //positionLat.textContent = decimalToSexagesimal(positionCurrent.lat, "lat");
-    //positionLng.textContent = decimalToSexagesimal(positionCurrent.lng, "lng");
+    positionLat.textContent = decimalToSexagesimal(positionCurrent.lat, "lat");
+    positionLng.textContent = decimalToSexagesimal(positionCurrent.lng, "lng");
   }
 
   function locationUpdateFail(error) {
-    positionLat.textContent = "n/a";
-    positionLng.textContent = "n/a";
     console.log("location fail: ", error);
   }
 
-  function setNightmode(on) {
-
-    if (on) {
-      btnNightmode.classList.add("active");
-    } else {
-      btnNightmode.classList.remove("active");
-    }
-
-    window.setTimeout(function() {
-      if (on) {
-        document.documentElement.classList.add("nightmode");
-      } else {
-        document.documentElement.classList.remove("nightmode");
-      }
-    }, 1);
-
-
-    isNightMode = on;
-  }
-
-  function toggleNightmode() {
-    setNightmode(!isNightMode);
-  }
-
-  function openMap() {
-    window.open("https://www.google.com/maps/place/@" + positionCurrent.lat + "," + positionCurrent.lng + ",16z", "_blank");
-  }
-
-  function popupOpenFromClick(event) {
-    popupOpen(event.currentTarget.dataset.name);
-  }
-
-  function popupOpen(name) {
-    var i;
-    for (i=0; i<popupInners.length; i++) {
-      popupInners[i].classList.add("popup__inner--hide");
-    }
-   // document.getElementById("popup-inner-" + name).classList.remove("popup__inner--hide");
-
-    //popup.classList.add("popup--show");
-  }
-
-  function popupClose() {
-    popup.classList.remove("popup--show");
-  }
-
-  function popupContentsClick(event) {
-    event.stopPropagation();
-  }
 
   function decimalToSexagesimal(decimal, type) {
     var degrees = decimal | 0;
@@ -400,17 +318,8 @@
   document.addEventListener("mozfullscreenchange", onFullscreenChange);
   document.addEventListener("MSFullscreenChange", onFullscreenChange);
 
-  //btnLockOrientation.addEventListener("click", toggleOrientationLock);
-  //btnNightmode.addEventListener("click", toggleNightmode);
-  //btnMap.addEventListener("click", openMap);
 
- // var i;
- // for (i=0; i<btnsPopup.length; i++) {
- //   btnsPopup[i].addEventListener("click", popupOpenFromClick);
- // }
-
- // popup.addEventListener("click", popupClose);
-  //popupContents.addEventListener("click", popupContentsClick);
+  var i;
 
   navigator.geolocation.watchPosition(locationUpdate, locationUpdateFail, {
     enableHighAccuracy: false,
@@ -418,7 +327,6 @@
     timeout: 27000
   });
 
-  //setNightmode(false);
   checkLockable();
 
 }());

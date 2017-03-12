@@ -71,13 +71,13 @@ body {
 }
 
 h1 {
-	font-size: 50px;
+	font-size: 2.5em;
 	margin: auto;
 	text-align: center;
 }
 
 body {
-	font: 20px Helvetica, sans-serif;
+	font: 1.6em Helvetica, sans-serif;
 	color: #333;
 }
 
@@ -87,7 +87,11 @@ article {
 	max-width: 650px;
 	margin: 0 auto;
 }
-
+p {
+	margin: auto;
+	text-align: center;
+	padding-bottom: 1em;
+}
 a, span {
 	color: #dc8100;
 	text-decoration: none;
@@ -96,50 +100,51 @@ a, span {
 </head>
 <body>
 	<article>
-		<h1>Welcome to</h1>
-		<h1>First floor of Engineering College, section IM</h1>
+		<h1>Welcome</h1>
 		<div>
 			<p>
 				Choose where you want to go.
 			</p>
 		</div>
-		<div id="start" class="ui selection dropdown">
-		<input type="hidden">
-		<div class="default text">Start</div>
-		<i class="dropdown icon"></i>
-		<div class="menu">
-			<div class="item" data-value="start">Intrare</div>
-			<div class="item" data-value="ie101">Carne</div>
-			<div class="item" data-value="ie102">Paine</div>
-			<div class="item" data-value="ie104">Legume</div>
-			<div class="item" data-value="ie105">Dulciuri</div>
-			<div class="item" data-value="butean">Lapte</div>
-			<div class="item" data-value="wcm">Bere</div>
-			<div class="item" data-value="wcf">Apa</div>
-			<div class="item" data-value="ie111">Fructe</div>
-			<div class="item" data-value="ie112">Detergent</div>
-			<div class="item" data-value="ie113">Altele</div>
-		</div>
-	</div>
+		<section style="margin: auto; align-items: center;">
+			<div id="start" class="ui selection dropdown" style="display: block;">
+				<input type="hidden">
+				<div class="default text">Start</div>
+				<i class="dropdown icon"></i>
+				<div class="menu">
+					<div class="item" data-value="start">Intrare</div>
+					<div class="item" data-value="ie101">Carne</div>
+					<div class="item" data-value="ie102">Paine</div>
+					<div class="item" data-value="ie104">Legume</div>
+					<div class="item" data-value="ie105">Dulciuri</div>
+					<div class="item" data-value="butean">Lapte</div>
+					<div class="item" data-value="wcm">Bere</div>
+					<div class="item" data-value="wcf">Apa</div>
+					<div class="item" data-value="ie111">Fructe</div>
+					<div class="item" data-value="ie112">Detergent</div>
+					<div class="item" data-value="ie113">Altele</div>
+				</div>
+			</div>
 
-	<div id="dest" class="ui selection dropdown">
-		<input type="hidden">
-		<div class="default text">Destinatie</div>
-		<i class="dropdown icon"></i>
-		<div class="menu">
-			<div class="item" data-value="start">Intrare</div>
-			<div class="item" data-value="ie101">Carne</div>
-			<div class="item" data-value="ie102">Paine</div>
-			<div class="item" data-value="ie104">Legume</div>
-			<div class="item" data-value="ie105">Dulciuri</div>
-			<div class="item" data-value="butean">Lapte</div>
-			<div class="item" data-value="wcm">Bere</div>
-			<div class="item" data-value="wcf">Apa</div>
-			<div class="item" data-value="ie111">Fructe</div>
-			<div class="item" data-value="ie112">Detergent</div>
-			<div class="item" data-value="ie113">Altele</div>
-		</div>
-	</div>
+			<div id="dest" class="ui selection dropdown" style="display: block;">
+				<input type="hidden">
+				<div class="default text">Destinatie</div>
+				<i class="dropdown icon"></i>
+				<div class="menu">
+					<div class="item" data-value="start">Intrare</div>
+					<div class="item" data-value="ie101">Carne</div>
+					<div class="item" data-value="ie102">Paine</div>
+					<div class="item" data-value="ie104">Legume</div>
+					<div class="item" data-value="ie105">Dulciuri</div>
+					<div class="item" data-value="butean">Lapte</div>
+					<div class="item" data-value="wcm">Bere</div>
+					<div class="item" data-value="wcf">Apa</div>
+					<div class="item" data-value="ie111">Fructe</div>
+					<div class="item" data-value="ie112">Detergent</div>
+					<div class="item" data-value="ie113">Altele</div>
+				</div>
+			</div>
+		</section>
 	</article>
 </body>
 </html>

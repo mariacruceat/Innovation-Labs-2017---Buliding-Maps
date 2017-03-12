@@ -19,7 +19,7 @@ function makeSVGElement(tag, attrs) {
 
 var globalPath = [];
 var t = 0;
-var per = -0.5;
+var per = 0.5;
 var listofpnts2 = [];
 
 var distanceBetweenCircles = 1;
@@ -94,7 +94,7 @@ $( document ).ready(function() {
 		console.log('pathLength ' + pathLength);
 		
 		var intervalID = setInterval(function(){
-			//per = t / 100.0;
+			per = t / 100.0;
 		    t += timerIncrement;
 		    if (t > 100)
 		    	t = 0;

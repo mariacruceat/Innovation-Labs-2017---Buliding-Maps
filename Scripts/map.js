@@ -28,6 +28,7 @@ var timerIncrement = 5;
 var perStep = 0.02; // 0 <= per <= 1
 var pathLength;
 var meters = 0;
+var metersold = 0;
 
 $( document ).ready(function() {
 	$("#mapContainer").click(function(){

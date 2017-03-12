@@ -125,7 +125,7 @@ $( document ).ready(function() {
 	});
 
 	var myShakeEvent = new Shake({
-		threshold: 10, // optional shake strength threshold
+		threshold: 0, // optional shake strength threshold
 		//timeout: 1000 // optional, determines the frequency of event generation
 	});
 	myShakeEvent.start();

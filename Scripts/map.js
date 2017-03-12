@@ -19,7 +19,7 @@ function makeSVGElement(tag, attrs) {
 
 var globalPath = [];
 var t = 0;
-var per = 0.5;
+var per = -0.02;
 var listofpnts2 = [];
 
 var distanceBetweenCircles = 1;
@@ -29,9 +29,9 @@ var perStep = 0.02; // 0 <= per <= 1
 var pathLength;
 
 $( document ).ready(function() {
-//	$("#mapContainer").click(function(){
-//		per += perStep;
-//	});
+	$("#mapContainer").click(function(){
+		per += perStep;
+	});
 	
 	$( "#mapContainer" ).load($_GET["map"] + '.svg', function(){
 		console.log('debug: ' +
@@ -94,7 +94,7 @@ $( document ).ready(function() {
 		console.log('pathLength ' + pathLength);
 		
 		var intervalID = setInterval(function(){
-			per = t / 100.0;
+			//per = t / 100.0;
 		    t += timerIncrement;
 		    if (t > 100)
 		    	t = 0;
@@ -123,4 +123,19 @@ $( document ).ready(function() {
 		});
 		}, timerPeriodMs);
 	});
+
+	var myShakeEvent = new Shake({
+		threshold: 15, // optional shake strength threshold
+		timeout: 1000 // optional, determines the frequency of event generation
+	});
+	myShakeEvent.start();
+
+	window.addEventListener('shake', shakeEventDidOccur, false);
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+
+    //put your own code here etc.
+    per += perStep;
+}
 });

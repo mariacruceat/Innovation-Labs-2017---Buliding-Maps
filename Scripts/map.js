@@ -19,17 +19,19 @@ function makeSVGElement(tag, attrs) {
 
 var globalPath = [];
 var t = 0;
+var per = -0.03;
 var listofpnts2 = [];
 
 var distanceBetweenCircles = 1;
 var timerPeriodMs = 50;
 var timerIncrement = 5;
 var perStep = 0.02; // 0 <= per <= 1
+var pathLength;
 
 $( document ).ready(function() {
-	$("#mapContainer").click(function(){
-		per += perStep;
-	});
+//	$("#mapContainer").click(function(){
+//		per += perStep;
+//	});
 	
 	$( "#mapContainer" ).load($_GET["map"] + '.svg', function(){
 		console.log('debug: ' +
@@ -88,6 +90,8 @@ $( document ).ready(function() {
 			}
 			lastp = val;
 		});
+		pathLength = (listofpnts2.length * distanceBetweenCircles);
+		console.log('pathLength ' + pathLength);
 		
 		var intervalID = setInterval(function(){
 			//per = t / 100.0;

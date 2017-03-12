@@ -4,12 +4,20 @@
         <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script type="application/javascript" src="Test/waypoints.js"></script>
         <script type="application/javascript" src="Scripts/graph.js"></script>
-        <script src="Shake/shake.js"></script>
         <script type="application/javascript" src="Scripts/map.js"></script>
         <link href="stylesheets/base.css" type="stylesheets"/>
     </head>
 <body>
-    <h1 class="exec">Building maps v 1.2.12</h1>
+    <h1 class="exec">Building maps v 1.3.0</h1>
     <div id="mapContainer"></div>
+    <span id="aa">nup</span>
+    <script>
+        setInterval(function(){
+            meters = $('#distance-number', window.parent.frames[0].document).text();
+            $('#aa').text(meters);
+            onMeterChange(meters);
+        }, 500);
+    </script>
+    <iframe style="width: 1px; height: 1px; margin-left: -500px; position: absolute;" src="pedo/index.html"></iframe>
 </body>
 </html>

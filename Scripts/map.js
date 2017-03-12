@@ -27,6 +27,7 @@ var timerPeriodMs = 50;
 var timerIncrement = 5;
 var perStep = 0.02; // 0 <= per <= 1
 var pathLength;
+var meters = 0;
 
 $( document ).ready(function() {
 	$("#mapContainer").click(function(){
@@ -123,19 +124,8 @@ $( document ).ready(function() {
 		});
 		}, timerPeriodMs);
 	});
-
-	var myShakeEvent = new Shake({
-		threshold: 0, // optional shake strength threshold
-		//timeout: 1000 // optional, determines the frequency of event generation
-	});
-	myShakeEvent.start();
-
-	window.addEventListener('shake', shakeEventDidOccur, false);
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-
-    //put your own code here etc.
-    per += perStep;
-}
 });
+function onMeterChange(meters)
+{
+	per += perStep;
+}

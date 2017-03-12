@@ -19,7 +19,7 @@ function makeSVGElement(tag, attrs) {
 
 var globalPath = [];
 var t = 0;
-var per = -0.03;
+var per = -0.5;
 var listofpnts2 = [];
 
 var distanceBetweenCircles = 1;

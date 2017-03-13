@@ -34,7 +34,8 @@ $( document ).ready(function() {
 //		per += perStep;
 //	});
 	
-	$( "#mapContainer" ).load($_GET["map"] + '.svg', function(){
+	$( "#mapContainer" ).load('/svg/v0.1/' + $_GET["map"] + '.svg', function(){
+		console.log();
 		console.log('debug: ' +
 				'<br>wp ' + JSON.stringify(wp));
 

@@ -1,0 +1,110 @@
+<!doctype html>
+<html encoding="UTF-8" lang="en">
+    <head>
+        <title>Test</title>
+        <script type="application/javascript" src="js/graph.js"></script>
+        <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){$('#floorplanContainer').load('svg/testing/floorplan.svg',function(){
+            //Constant values
+
+            //Waypoints list
+            var waypoints = {};
+
+            //Other variables
+            var i = 0;
+            var awaitSecondPress = false;
+            var firstElement;
+
+            //Keep svg inside container
+            $('svg').attr('width','100%')
+            $('svg').removeAttr('height');
+
+            //Extract waypoints
+            $('ellipse[id^="wp"]').each(function(index){
+                waypoints[$(this).attr('id')] = {};
+            });
+
+            //On waypoint clicked
+            $('ellipse[id^="wp"]').on('click',function(){
+                //Check if waypoint was pressed before
+                if (!awaitSecondPress)
+                {
+                    firstElement = this;
+                    ChangeColor(this,'#00ff40');
+                    awaitSecondPress = true;
+                }
+                else
+                {
+                    var dist = 1;
+                    var id1 = $(firstElement).attr('id');
+                    var id2 = $(this).attr('id');
+
+                    //Add distances between the 2 waypoints
+                    dist = 1//prompt("Enter distance","1");
+                    ChangeColor(firstElement,'#ff0000');
+
+                    if (dist != null)
+                    {
+                        waypoints[id1][id2] = dist;
+                        waypoints[id2][id1] = dist;
+
+                        //Draw a line
+                        var line = $(document.createElementNS('http://www.w3.org/2000/svg','line'));
+                        line.attr('x1',$(firstElement).attr('cx'));
+                        line.attr('y1',$(firstElement).attr('cy'));
+                        line.attr('x2',$(this).attr('cx'));
+                        line.attr('y2',$(this).attr('cy'));
+                        line.attr('style','stroke:#1c8dff;stroke-width:0.6;stroke-dasharray:1.32291667,0.66145833;stroke-dashoffset:0');
+                        $('svg').append(line);
+                    }
+
+                    //Completed
+                    awaitSecondPress = false;
+                }
+            });
+
+            $('#testBtn').on('click',function(){
+                 
+            })
+
+            /**
+             * Change the color of a SVG element extracting from 'style' attribute
+             * @param {Object} element - the svg element
+             * @param {string} color - the color as hex value
+             * @returns {Object} - The modified object
+             * */
+            function ChangeColor(element,color)
+            {
+                //Extract color
+                var style = $(element).attr('style').split(';');
+                var col = style[0].split(':');
+                //Edit and join
+                col[1] = color;
+                style[0] = col.join(':');
+                $(element).attr('style', style.join(';'));
+                return element;
+            }
+        })});  
+        </script>
+        <style>
+            div {
+                border: 2px solid lightgray;
+                border-radius: 5px;
+                width: 45%;
+                float: left;
+            }
+            html {
+                font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+                color: #4e4e4e;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="floorplanContainer"></div>
+        <div id="debugInfo">
+            <h1 style="text-decoration: underline">Debug things</h1>
+            <button id="testBtn">Do thing</button>
+        </div>
+    </body>
+</html>

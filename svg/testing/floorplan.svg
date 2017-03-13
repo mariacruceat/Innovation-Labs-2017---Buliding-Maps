@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="floorplan.svg">
+  <defs
+     id="defs2">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 148.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="210 : 148.5 : 1"
+       inkscape:persp3d-origin="105 : 99 : 1"
+       id="perspective4521" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.6194132"
+     inkscape:cx="644.91607"
+     inkscape:cy="681.33"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 1.8484589,3.0950341 0,296.07576 l 76.711044,1.84846 v -51.75684"
+       id="path4545"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 1.8531288,3.1271591 H 79.461237 V 40.993403"
+       id="path4547"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 76.711044,217.51627 0.92423,-25.87843 -79.4837329,-1.84846"
+       id="path4549"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 77.635274,191.63784 0.924229,-56.37799"
+       id="path4551"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 0,89.972601 80.407961,88.124143 V 59.47303"
+       id="path4555"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.9050003;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 80.407959,88.124143 78.559503,116.77525"
+       id="path4557"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 125.6952,297 0.92423,-86.87757 v 0 h 46.21148"
+       id="path4559"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 193.16395,210.12243 15.7119,0.92423"
+       id="path4561"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 174.67936,109.38142 0.92423,66.54452 h -44.36301 l 0.92423,-127.543663 47.1357,-47.1357017 -2.77268,80.4079627"
+       id="path4563"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="wpgr_1"
+     inkscape:label="waypointGroup">
+    <title
+       id="title4618">Waypoint Group#1</title>
+    <ellipse
+       inkscape:label="out"
+       ry="2.2873514"
+       rx="2.8591888"
+       cy="297.81689"
+       cx="100.235"
+       id="wp1"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4550">Entrance#1</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="room"
+       ry="1.7155133"
+       rx="1.9605867"
+       cy="229.93158"
+       cx="80.710815"
+       id="wp2"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4554">Room#1</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="waypoint"
+       ry="2.2873514"
+       rx="2.2056601"
+       cy="191.78185"
+       cx="103.33926"
+       id="wp3"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4558">Corner#1</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="room"
+       ry="1.9605867"
+       rx="2.0422778"
+       cy="206.32285"
+       cx="183.06978"
+       id="wp4"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4562">Room#2</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="waypoint"
+       ry="2.5324244"
+       rx="2.4507334"
+       cy="189.90294"
+       cx="188.86984"
+       id="wp5"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4566">Corner#2</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="room"
+       ry="1.6338223"
+       rx="1.7972045"
+       cy="125.28528"
+       cx="84.305229"
+       id="wp6"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4570">Room#3</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="room"
+       ry="1.8788956"
+       rx="2.0422778"
+       cy="48.904083"
+       cx="84.713684"
+       id="wp7"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4574">Room#4</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="room"
+       ry="2.2056601"
+       rx="2.6141157"
+       cy="96.284935"
+       cx="183.80501"
+       id="wp8"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4578">Room#5</title>
+    </ellipse>
+    <ellipse
+       inkscape:label="out"
+       ry="1.7155133"
+       rx="1.7972045"
+       cy="0.70632887"
+       cx="194.75162"
+       id="wp9"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4582">Entrance#2</title>
+    </ellipse>
+    <ellipse
+       onclick=" "
+       inkscape:label="Waypoint#1"
+       ry="2.0422778"
+       rx="1.8788956"
+       cy="88.442581"
+       cx="103.17588"
+       id="wp10"
+       style="fill:#ff0000;fill-opacity:1;stroke:#6f8400;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title4586">HallwayWp#1</title>
+    </ellipse>
+  </g>
+</svg>

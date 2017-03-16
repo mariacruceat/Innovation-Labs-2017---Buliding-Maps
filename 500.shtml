@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	    <title>Error 500</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style>
+            body {
+                text-align: center;
+                padding-top: 150px;
+            }
+            @media only screen and (max-width: 700px) {
+                body {
+                    padding-top: 50px;
+                }
+            }
+            @media only screen and (max-width: 400px) {
+                body {
+                    padding-top: 0px;
+                }
+            }
+            h1 { font-size: 50px; }
+            body { font: 20px Helvetica, sans-serif; color: #333; }
+            article { display: block; text-align: left; max-width: 650px; margin: 0 auto; }
+            a , span { color: #dc8100; text-decoration: none; }
+        </style>
+    </head>
+    <body>
+	    <article>
+	        <h1>Error 500</h1>
+	        <div>
+	            <p>Uups, it seems that a 500 'Internal server error' occured. Try to go back to the original page and refresh it (ctrl + f5 for firefox).</p>
+                <p>If this error persists you can always send a mail to <span>circadragos@yahoo.com</span>.</p>
+	            <p>&mdash; Cidra - Circa Dragos</p>
+	        </div>
+        </article>
+    </body>
+</html>
+</article>

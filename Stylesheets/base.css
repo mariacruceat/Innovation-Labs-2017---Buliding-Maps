@@ -1,3 +1,8 @@
+html {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: #4e4e4e;
+}
+
 a.expanding {
     cursor: pointer;
     display: inline-block;
@@ -8,9 +13,11 @@ a.expanding {
     background: transparent none repeat scroll 0px 0px;
     transition: color 0.2s ease 0s
 }
+
 a.expanding:hover {
     color: #0064B4;
 }
+
 a.expanding:after {
     content: '';
     display: block;
@@ -21,6 +28,7 @@ a.expanding:after {
     background: #5b86ff;
     transition: width .3s ease, background-color .3s ease;
 }
+
 a.expanding:hover:after {
     width: 100%;
 }
@@ -29,11 +37,12 @@ a.expanding:hover:after {
     visibility: visible;
     display: flex;
 }
+
 #smallMenu {
     visibility: hidden;
     display: none;
 }
-            
+
 @media screen and (max-width: 770px) {
     #bigMenu {
         visibility: hidden;

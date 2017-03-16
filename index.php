@@ -152,7 +152,7 @@ a, span {
 	</article>
 	<article>
 		<h2>Dev tools</h2>
-		<div class="ui button"></div>
+		<a href="map-editor.php"><div class="ui button">Map editor</div></a>
 	</article>
 	<?php include_once('includes\footer.php'); ?>
 </body>

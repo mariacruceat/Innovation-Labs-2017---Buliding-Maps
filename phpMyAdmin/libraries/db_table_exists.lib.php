@@ -6,15 +6,13 @@
  *
  * @package PhpMyAdmin
  */
-use PMA\libraries\Message;
-
 if (! defined('PHPMYADMIN')) {
     exit;
 }
 
 if (empty($is_db)) {
-    if (mb_strlen($db)) {
-        $is_db = @$GLOBALS['dbi']->selectDb($db);
+    if (strlen($db)) {
+        $is_db = @PMA_DBI_select_db($db);
     } else {
         $is_db = false;
     }
@@ -22,12 +20,12 @@ if (empty($is_db)) {
     if (! $is_db) {
         // not a valid db name -> back to the welcome page
         if (! defined('IS_TRANSFORMATION_WRAPPER')) {
-            $response = PMA\libraries\Response::getInstance();
+            $response = PMA_Response::getInstance();
             if ($response->isAjax()) {
-                $response->setRequestStatus(false);
+                $response->isSuccess(false);
                 $response->addJSON(
                     'message',
-                    Message::error(__('No databases selected.'))
+                    PMA_Message::error(__('No databases selected.'))
                 );
             } else {
                 $url_params = array('reload' => 1);
@@ -41,8 +39,8 @@ if (empty($is_db)) {
                     $url_params['show_as_php'] = $show_as_php;
                 }
                 PMA_sendHeaderLocation(
-                    './index.php'
-                    . PMA_URL_getCommon($url_params, 'text')
+                    $cfg['PmaAbsoluteUri'] . 'index.php'
+                    . PMA_generate_common_url($url_params, '&')
                 );
             }
             exit;
@@ -52,29 +50,28 @@ if (empty($is_db)) {
 
 if (empty($is_table)
     && !defined('PMA_SUBMIT_MULT')
-    && !defined('TABLE_MAY_BE_ABSENT')
+    && ! defined('TABLE_MAY_BE_ABSENT')
 ) {
     // Not a valid table name -> back to the db_sql.php
 
-    if (mb_strlen($table)) {
-        $is_table = $GLOBALS['dbi']->getCachedTableContent(array($db, $table), false);
+    if (strlen($table)) {
+        $is_table = isset(PMA_Table::$cache[$db][$table]);
 
         if (! $is_table) {
-            $_result = $GLOBALS['dbi']->tryQuery(
-                'SHOW TABLES LIKE \''
-                . $GLOBALS['dbi']->escapeString($table) . '\';',
-                null, PMA\libraries\DatabaseInterface::QUERY_STORE
+            $_result = PMA_DBI_try_query(
+                'SHOW TABLES LIKE \'' . PMA_Util::sqlAddSlashes($table, true) . '\';',
+                null, PMA_DBI_QUERY_STORE
             );
-            $is_table = @$GLOBALS['dbi']->numRows($_result);
-            $GLOBALS['dbi']->freeResult($_result);
+            $is_table = @PMA_DBI_num_rows($_result);
+            PMA_DBI_free_result($_result);
         }
     } else {
         $is_table = false;
     }
 
     if (! $is_table) {
-        if (!defined('IS_TRANSFORMATION_WRAPPER')) {
-            if (mb_strlen($table)) {
+        if (! defined('IS_TRANSFORMATION_WRAPPER')) {
+            if (strlen($table)) {
                 // SHOW TABLES doesn't show temporary tables, so try select
                 // (as it can happen just in case temporary table, it should be
                 // fast):
@@ -83,14 +80,13 @@ if (empty($is_table)
                  * @todo should this check really
                  * only happen if IS_TRANSFORMATION_WRAPPER?
                  */
-                $_result = $GLOBALS['dbi']->tryQuery(
-                    'SELECT COUNT(*) FROM ' . PMA\libraries\Util::backquote($table)
-                    . ';',
+                $_result = PMA_DBI_try_query(
+                    'SELECT COUNT(*) FROM ' . PMA_Util::backquote($table) . ';',
                     null,
-                    PMA\libraries\DatabaseInterface::QUERY_STORE
+                    PMA_DBI_QUERY_STORE
                 );
-                $is_table = ($_result && @$GLOBALS['dbi']->numRows($_result));
-                $GLOBALS['dbi']->freeResult($_result);
+                $is_table = ($_result && @PMA_DBI_num_rows($_result));
+                PMA_DBI_free_result($_result);
             }
 
             if (! $is_table) {
@@ -104,3 +100,4 @@ if (empty($is_table)
         }
     }
 } // end if (ensures table exists)
+?>

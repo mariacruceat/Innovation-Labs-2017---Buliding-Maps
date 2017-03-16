@@ -1,11 +1,9 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Main stylesheet loader
  *
  * @package PhpMyAdmin
  */
- use PMA\libraries\OutputBuffering;
 
 /**
  *
@@ -20,14 +18,6 @@ if (PMA_USR_BROWSER_AGENT == 'IE' && PMA_USR_BROWSER_VER == '6'
     && (ini_get('zlib.output_compression'))
 ) {
     @ini_set('zlib.output_compression', 'Off');
-} else {
-    $buffer = OutputBuffering::getInstance();
-    $buffer->start();
-    register_shutdown_function(
-        function () {
-            echo OutputBuffering::getInstance()->getContents();
-        }
-    );
 }
 
 // Send correct type:
@@ -38,3 +28,4 @@ header('Content-Type: text/css; charset=UTF-8');
 header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
 
 $_SESSION['PMA_Theme_Manager']->printCss();
+?>

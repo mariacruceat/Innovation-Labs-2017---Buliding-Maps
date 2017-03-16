@@ -5,9 +5,6 @@
  *
  * @package PhpMyAdmin
  */
-use PMA\libraries\Message;
-use PMA\libraries\Response;
-
 if (! defined('PHPMYADMIN')) {
     exit;
 }
@@ -17,56 +14,48 @@ if (! defined('PHPMYADMIN')) {
  */
 require_once './libraries/bookmark.lib.php';
 
-PMA\libraries\Util::checkParameters(array('db'));
-
-global $cfg;
-global $db;
+PMA_Util::checkParameters(array('db'));
 
 $is_show_stats = $cfg['ShowStats'];
 
-$db_is_system_schema = $GLOBALS['dbi']->isSystemSchema($db);
-if ($db_is_system_schema) {
+$db_is_information_schema = PMA_is_system_schema($db);
+if ($db_is_information_schema) {
     $is_show_stats = false;
 }
 
 /**
  * Defines the urls to return to in case of error in a sql statement
  */
-$err_url_0 = 'index.php' . PMA_URL_getCommon();
+$err_url_0 = 'index.php?' . PMA_generate_common_url();
+$err_url   = $cfg['DefaultTabDatabase'] . '?' . PMA_generate_common_url($db);
 
-$err_url = PMA\libraries\Util::getScriptNameForOption(
-    $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
-)
-    . PMA_URL_getCommon(array('db' => $db));
 
 /**
  * Ensures the database exists (else move to the "parent" script) and displays
  * headers
  */
 if (! isset($is_db) || ! $is_db) {
-    if (mb_strlen($db)) {
-        $is_db = $GLOBALS['dbi']->selectDb($db);
+    if (strlen($db)) {
+        $is_db = PMA_DBI_select_db($db);
         // This "Command out of sync" 2014 error may happen, for example
         // after calling a MySQL procedure; at this point we can't select
         // the db but it's not necessarily wrong
-        if ($GLOBALS['dbi']->getError() && $GLOBALS['errno'] == 2014) {
+        if (PMA_DBI_getError() && $GLOBALS['errno'] == 2014) {
             $is_db = true;
             unset($GLOBALS['errno']);
         }
-    } else {
-        $is_db = false;
     }
     // Not a valid db name -> back to the welcome page
-    $uri = './index.php'
-        . PMA_URL_getCommon(array(), 'text')
+    $uri = $cfg['PmaAbsoluteUri'] . 'index.php?'
+        . PMA_generate_common_url('', '', '&')
         . (isset($message) ? '&message=' . urlencode($message) : '') . '&reload=1';
-    if (!mb_strlen($db) || ! $is_db) {
-        $response = PMA\libraries\Response::getInstance();
+    if (! strlen($db) || ! $is_db) {
+        $response = PMA_Response::getInstance();
         if ($response->isAjax()) {
-            $response->setRequestStatus(false);
+            $response->isSuccess(false);
             $response->addJSON(
                 'message',
-                Message::error(__('No databases selected.'))
+                PMA_Message::error(__('No databases selected.'))
             );
         } else {
             PMA_sendHeaderLocation($uri);
@@ -84,10 +73,10 @@ if (isset($_REQUEST['submitcollation'])
 ) {
     list($db_charset) = explode('_', $_REQUEST['db_collation']);
     $sql_query        = 'ALTER DATABASE '
-        . PMA\libraries\Util::backquote($db)
+        . PMA_Util::backquote($db)
         . ' DEFAULT' . PMA_generateCharsetQueryPart($_REQUEST['db_collation']);
-    $result           = $GLOBALS['dbi']->query($sql_query);
-    $message          = Message::success();
+    $result           = PMA_DBI_query($sql_query);
+    $message          = PMA_Message::success();
     unset($db_charset);
 
     /**
@@ -95,9 +84,9 @@ if (isset($_REQUEST['submitcollation'])
      * db charset change action on db_operations.php.  If this causes a bug on
      * other pages, we might have to move this to a different location.
      */
-    if ($GLOBALS['is_ajax_request'] == true) {
-        $response = PMA\libraries\Response::getInstance();
-        $response->setRequestStatus($message->isSuccess());
+    if ( $GLOBALS['is_ajax_request'] == true) {
+        $response = PMA_Response::getInstance();
+        $response->isSuccess($message->isSuccess());
         $response->addJSON('message', $message);
         exit;
     }
@@ -106,5 +95,6 @@ if (isset($_REQUEST['submitcollation'])
 /**
  * Set parameters for links
  */
-$url_query = PMA_URL_getCommon(array('db' => $db));
+$url_query = PMA_generate_common_url($db);
 
+?>

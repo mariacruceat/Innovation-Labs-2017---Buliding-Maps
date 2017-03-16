@@ -5,59 +5,25 @@
  *
  * @package PhpMyAdmin
  */
+if (! defined('PHPMYADMIN')) {
+    exit;
+}
 
 /**
  * Checks whether given link is valid
  *
- * @param string  $url   URL to check
- * @param boolean $http  Whether to allow http links
- * @param boolean $other Whether to allow ftp and mailto links
+ * @param string $url URL to check
  *
  * @return boolean True if string can be used as link
  */
-function PMA_checkLink($url, $http=false, $other=false)
+function PMA_checkLink($url)
 {
-    $url = strtolower($url);
     $valid_starts = array(
+        'http://',
         'https://',
-        './url.php?url=https%3a%2f%2f',
-        './doc/html/',
-        # possible return values from Util::getScriptNameForOption
-        './index.php?',
-        './server_databases.php?',
-        './server_status.php?',
-        './server_variables.php?',
-        './server_privileges.php?',
-        './db_structure.php?',
-        './db_sql.php?',
-        './db_search.php?',
-        './db_operations.php?',
-        './tbl_structure.php?',
-        './tbl_sql.php?',
-        './tbl_select.php?',
-        './tbl_change.php?',
-        './sql.php?',
-        # Hardcoded options in libraries/special_schema_links.lib.php
-        './db_events.php?',
-        './db_routines.php?',
-        './server_privileges.php?',
-        './tbl_structure.php?',
+        './url.php?url=http%3A%2F%2F',
+        './url.php?url=https%3A%2F%2F',
     );
-    // Adjust path to setup script location
-    if (defined('PMA_SETUP')) {
-        foreach ($valid_starts as $key => $value) {
-            if (substr($value, 0, 2) === './') {
-                $valid_starts[$key] = '.' . $value;
-            }
-        }
-    }
-    if ($other) {
-        $valid_starts[] = 'mailto:';
-        $valid_starts[] = 'ftp://';
-    }
-    if ($http) {
-        $valid_starts[] = 'http://';
-    }
     if (defined('PMA_SETUP')) {
         $valid_starts[] = '?page=form&';
         $valid_starts[] = '?page=servers&';
@@ -92,9 +58,6 @@ function PMA_replaceBBLink($found)
     $target = '';
     if (! empty($found[3])) {
         $target = ' target="' . $found[3] . '"';
-        if ($found[3] == '_blank') {
-            $target .= ' rel="noopener noreferrer"';
-        }
     }
 
     /* Construct url */
@@ -116,21 +79,16 @@ function PMA_replaceBBLink($found)
  */
 function PMA_replaceDocLink($found)
 {
-    if (count($found) >= 4) {
-        $page = $found[1];
-        $anchor = $found[3];
+    $anchor = $found[1];
+    if (strncmp('faq', $anchor, 3) == 0) {
+        $page = 'faq';
+    } else if (strncmp('cfg', $anchor, 3) == 0) {
+        $page = 'cfg';
     } else {
-        $anchor = $found[1];
-        if (strncmp('faq', $anchor, 3) == 0) {
-            $page = 'faq';
-        } else if (strncmp('cfg', $anchor, 3) == 0) {
-            $page = 'config';
-        } else {
-            /* Guess */
-            $page = 'setup';
-        }
+        /* Guess */
+        $page = 'setup';
     }
-    $link = PMA\libraries\Util::getDocuLink($page, $anchor);
+    $link = PMA_Util::getDocuLink($page, $anchor);
     return '<a href="' . $link . '" target="documentation">';
 }
 
@@ -174,9 +132,7 @@ function PMA_sanitize($message, $escape = false, $safe = false)
         '[sup]'     => '<sup>',
         '[/sup]'    => '</sup>',
          // used in common.inc.php:
-        '[conferr]' => '<iframe src="show_config_errors.php"><a href="show_config_errors.php">show_config_errors.php</a></iframe>',
-         // used in libraries/Util.php
-        '[dochelpicon]' => PMA\libraries\Util::getImage('b_help.png', __('Documentation')),
+        '[conferr]' => '<iframe src="show_config_errors.php" />',
     );
 
     $message = strtr($message, $replace_pairs);
@@ -189,7 +145,7 @@ function PMA_sanitize($message, $escape = false, $safe = false)
 
     /* Replace documentation links */
     $message = preg_replace_callback(
-        '/\[doc@([a-zA-Z0-9_-]+)(@([a-zA-Z0-9_-]*))?\]/',
+        '/\[doc@([a-zA-Z0-9_-]+)\]/',
         'PMA_replaceDocLink',
         $message
     );
@@ -213,7 +169,7 @@ function PMA_sanitize($message, $escape = false, $safe = false)
  *    When exporting, avoiding generation of an unexpected double-extension file
  *
  * @param string  $filename    The filename
- * @param boolean $replaceDots Whether to also replace dots
+ * @param boolean $replaceDots Whether to also replace dots 
  *
  * @return string  the sanitized filename
  *
@@ -231,3 +187,4 @@ function PMA_sanitizeFilename($filename, $replaceDots = false)
     return $filename;
 }
 
+?>

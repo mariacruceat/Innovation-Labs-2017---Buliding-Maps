@@ -1,16 +1,12 @@
 <?php
-	
+	require_once('includes/db_connect.php');
+	include('includes/error_handling.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+	<?php include_once('includes\header.php'); ?>
 <script>
 	var startVal;
 	var destVal;
@@ -74,10 +70,14 @@ body {
 	}
 }
 
-h1 {
+h1{
 	font-size: 2.5em;
 	margin: auto;
 	text-align: center;
+}
+h2 {
+	font-size: 2em;
+	text-decoration: underline;
 }
 
 body {
@@ -151,8 +151,9 @@ a, span {
 		</section>
 	</article>
 	<article>
-		<h1 style="text-decoration: underline">Dev tools</h1>
-		<div class="ui button"
+		<h2>Dev tools</h2>
+		<div class="ui button"></div>
 	</article>
+	<?php include_once('includes\footer.php'); ?>
 </body>
 </html>

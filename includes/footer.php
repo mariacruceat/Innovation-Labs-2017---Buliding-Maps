@@ -1,6 +1,6 @@
 <?php
 echo '<div class="ui divider"></div>
-      <p>Cidra.ga © 2015-' . date("Y") . '. All right reserved</p>';
+      <p>example.com © 2017-' . date("Y") . '. All right reserved</p>';
 
 if ((DEBUG === "DISPLAY") and $GLOBALS["fullLog"]!="")
     echo  '<div id="errorDialog" class="ui long modal">

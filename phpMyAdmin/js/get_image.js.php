@@ -15,16 +15,7 @@ header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
 // Avoid loading the full common.inc.php because this would add many
 // non-js-compatible stuff like DOCTYPE
 define('PMA_MINIMUM_COMMON', true);
-define('PMA_PATH_TO_BASEDIR', '../');
 require_once './libraries/common.inc.php';
-
-$buffer = PMA\libraries\OutputBuffering::getInstance();
-$buffer->start();
-register_shutdown_function(
-    function () {
-        echo PMA\libraries\OutputBuffering::getInstance()->getContents();
-    }
-);
 
 // Get the data for the sprites, if it's available
 if (is_readable($_SESSION['PMA_Theme']->getPath() . '/sprites.lib.php')) {
@@ -69,7 +60,7 @@ function PMA_getImage(image, alternate, attributes) {
         return false;
     };
     var sprites = [
-        <?php echo implode($keys, ",\n        ") , "\n"; ?>
+        <?php echo implode($keys, ",\n        ") . "\n"; ?>
     ];
     // custom image object, it will eventually be returned by this functions
     var retval = {
@@ -110,15 +101,15 @@ function PMA_getImage(image, alternate, attributes) {
     }
     // set alt
     if (attributes.alt != undefined) {
-        retval.attr('alt', escapeHtml(attributes.alt));
+        retval.attr('alt', attributes.alt);
     } else {
-        retval.attr('alt', escapeHtml(alternate));
+        retval.attr('alt', alternate);
     }
     // set title
     if (attributes.title != undefined) {
-        retval.attr('title', escapeHtml(attributes.title));
+        retval.attr('title', attributes.title);
     } else {
-        retval.attr('title', escapeHtml(alternate));
+        retval.attr('title', alternate);
     }
     // set src
     var klass = image.replace('.gif', '').replace('.png', '');
@@ -128,19 +119,14 @@ function PMA_getImage(image, alternate, attributes) {
     } else {
         // it's an image file
         retval.isSprite = false;
-        retval.attr(
-            'src',
-            "<?php echo $_SESSION['PMA_Theme']->getImgPath(); ?>" + image
-        );
+        retval.attr('src', "<?php echo $_SESSION['PMA_Theme']->getImgPath(); ?>" + image);
     }
     // set all other attrubutes
     for (var i in attributes) {
         if (i == 'src') {
             // do not allow to override the 'src' attribute
             continue;
-        }
-
-        if (i == 'class') {
+        } else if (i == 'class') {
             retval.attr(i, retval.attr('class') + ' ' + attributes[i]);
         } else {
             retval.attr(i, attributes[i]);

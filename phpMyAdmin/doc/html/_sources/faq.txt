@@ -4,7 +4,7 @@ FAQ - Frequently Asked Questions
 ================================
 
 Please have a look at our `Link section
-<https://www.phpmyadmin.net/docs/>`_ on the official
+<http://www.phpmyadmin.net/home_page/docs.php>`_ on the official
 phpMyAdmin homepage for in-depth coverage of phpMyAdmin's features and
 or interface.
 
@@ -45,7 +45,7 @@ groups.
 
 You just forgot to read the *install.txt* file from the PHP
 distribution. Have a look at the last message in this `PHP bug report #12061
-<https://bugs.php.net/bug.php?id=12061>`_ from the official PHP bug
+<http://bugs.php.net/bug.php?id=12061>`_ from the official PHP bug
 database.
 
 .. _faq1_5:
@@ -68,13 +68,13 @@ and :file:`index.php`.
 
 .. _faq1_7:
 
-1.7 How can I GZip a dump or a CSV export? It does not seem to work.
---------------------------------------------------------------------
+1.7 How can I GZip or Bzip a dump or a CSV export? It does not seem to work.
+----------------------------------------------------------------------------
 
-This feature is based on the ``gzencode()``
-PHP function to be more independent of the platform (Unix/Windows,
-Safe Mode or not, and so on). So, you must have Zlib support
-(``--with-zlib``).
+These features are based on the ``gzencode()`` and ``bzcompress()``
+PHP functions to be more independent of the platform (Unix/Windows,
+Safe Mode or not, and so on). So, you must have Zlib/Bzip2 support
+(``--with-zlib`` and ``--with-bz2``).
 
 .. _faq1_8:
 
@@ -129,7 +129,7 @@ and after execution of your :term:`SQL` commands, removed.
 -------------------------------------------------------
 
 The MySQL manual explains how to `reset the permissions
-<https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html>`_.
+<http://dev.mysql.com/doc/mysql/en/resetting-permissions.html>`_.
 
 .. _faq1_13:
 
@@ -146,7 +146,7 @@ The MySQL manual explains how to `reset the permissions
 1.15 I have problems with *mysql.user* column names.
 ----------------------------------------------------
 
-In previous MySQL versions, the ``User`` and ``Password`` columns were
+In previous MySQL versions, the ``User`` and ``Password``columns were
 named ``user`` and ``password``. Please modify your column names to
 align with current standards.
 
@@ -173,7 +173,7 @@ hosting provider is unwilling to change the settings:
   then able to import the files from the temporary directory. More
   information is available in the :ref:`config`  of this document.
 * Using a utility (such as `BigDump
-  <http://www.ozerov.de/bigdump/>`_) to split the files before
+  <http://www.ozerov.de/bigdump.php>`_) to split the files before
   uploading. We cannot support this or any third party applications, but
   are aware of users having success with it.
 * If you have shell (command line) access, use MySQL to import the files
@@ -186,14 +186,24 @@ hosting provider is unwilling to change the settings:
 
 .. _faq1_17:
 
-1.17 Which Database versions does phpMyAdmin support?
------------------------------------------------------
+1.17 Which MySQL versions does phpMyAdmin support?
+--------------------------------------------------
 
-For `MySQL <https://www.mysql.com/>`_, versions 5.5 and newer are supported. 
-For older MySQL versions, our `Downloads <https://www.phpmyadmin.net/downloads/>`_ page offers older phpMyAdmin versions 
-(which may have become unsupported).
+Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For
+older MySQL versions, you need to use the latest 2.x branch.
+phpMyAdmin can connect to your MySQL server using PHP's classic `MySQL
+extension <http://php.net/mysql>`_ as well as the `improved MySQL
+extension (MySQLi) <http://php.net/mysqli>`_ that is available in PHP
+5.0. The latter one should be used unless you have a good reason not
+to do so. When compiling PHP, we strongly recommend that you manually
+link the MySQL extension of your choice to a MySQL client library of
+at least the same minor version since the one that is bundled with
+some PHP distributions is rather old and might cause problems see
+:ref:`faq1_17a`. `MariaDB <http://mariadb.org/>`_ is also supported
+(versions 5.1 and 5.2 were tested). 
 
-For `MariaDB <https://mariadb.org/>`_, versions 5.5 and newer are supported.
+.. versionchanged:: 3.5
+    Since phpMyAdmin 3.5 `Drizzle <http://www.drizzle.org/>`_ is supported.
 
 .. _faq1_17a:
 
@@ -207,10 +217,11 @@ your server - as mentioned in :ref:`faq1_17`. This problem is
 generally caused by using MySQL version 4.1 or newer. MySQL changed
 the authentication hash and your PHP is trying to use the old method.
 The proper solution is to use the `mysqli extension
-<https://www.php.net/mysqli>`_ with the proper client library to match
-your MySQL installation. More
+<http://www.php.net/mysqli>`_ with the proper client library to match
+your MySQL installation. Your chosen extension is specified in 
+:config:option:`$cfg['Servers'][$i]['extension']`. More
 information (and several workarounds) are located in the `MySQL
-Documentation <https://dev.mysql.com/doc/refman/5.7/en/old-client.html>`_.
+Documentation <http://dev.mysql.com/doc/mysql/en/old-client.html>`_.
 
 .. _faq1_18:
 
@@ -224,23 +235,20 @@ Documentation <https://dev.mysql.com/doc/refman/5.7/en/old-client.html>`_.
 
 The :term:`TCPDF` library we're using for this feature requires some special
 files to use font faces. Please refers to the `TCPDF manual
-<https://tcpdf.org/>`_ to build these files.
+<http://www.tcpdf.org/>`_ to build these files.
 
 .. _faqmysql:
 
-1.20 I receive an error about missing mysqli and mysql extensions.
-------------------------------------------------------------------
+1.20 I receive the error "cannot load MySQL extension, please check PHP Configuration".
+---------------------------------------------------------------------------------------
 
 To connect to a MySQL server, PHP needs a set of MySQL functions
 called "MySQL extension". This extension may be part of the PHP
 distribution (compiled-in), otherwise it needs to be loaded
-dynamically. Its name is probably *mysqli.so* or *php\_mysqli.dll*.
+dynamically. Its name is probably *mysql.so* or *php\_mysql.dll*.
 phpMyAdmin tried to load the extension but failed. Usually, the
 problem is solved by installing a software package called "PHP-MySQL"
 or something similar.
-
-There are currently two interfaces PHP provides as MySQL extensions - ``mysql``
-and ``mysqli``. The ``mysqli`` is tried first, because it's the best one.
 
 .. _faq1_21:
 
@@ -294,7 +302,7 @@ httpd.conf, like this:
 
 .. code-block:: apache
 
-
+    
     # mod_gzip_item_include file \.php$
     # mod_gzip_item_include mime "application/x-httpd-php.*"
 
@@ -316,7 +324,7 @@ should work.
 1.27 I get empty page when I want to view huge page (eg. db\_structure.php with plenty of tables).
 --------------------------------------------------------------------------------------------------
 
-This was caused by a `PHP bug <https://bugs.php.net/bug.php?id=21079>`_ that occur when
+This was caused by a `PHP bug <http://bugs.php.net/21079>`_ that occur when
 GZIP output buffering is enabled. If you turn off it (by
 :config:option:`$cfg['OBGzip']` in :file:`config.inc.php`), it should work.
 This bug will has been fixed in PHP 5.0.0.
@@ -346,7 +354,7 @@ directives are used:
 
 .. code-block:: apache
 
-
+    
     SetOutputFilter PHP
     SetInputFilter PHP
 
@@ -364,7 +372,7 @@ restart Apache:
 
 .. code-block:: apache
 
-
+    
     #SetOutputFilter PHP
     #SetInputFilter PHP
 
@@ -383,7 +391,8 @@ MMCache but upgrading MMCache to version 2.3.21 solves the problem.
 
 Yes.
 
-Since release 4.5, phpMyAdmin supports only PHP 5.5 and newer. Since release 4.1 phpMyAdmin supports only PHP 5.3 and newer. For PHP 5.2 you can use 4.0.x releases.
+Since release 3.0 only PHP 5.2 and newer. For older PHP versions, use
+phpMyAdmin 2.11.x.
 
 .. _faq1_32:
 
@@ -414,15 +423,14 @@ Yes. This procedure was tested with phpMyAdmin 2.6.1, PHP 4.3.9 in
 1.34 Can I access directly to database or table pages?
 ------------------------------------------------------
 
-Yes. Out of the box, you can use :term:`URL` like
-https://example.com/phpMyAdmin/index.php?server=X&db=database&table=table&target=script.
-For ``server`` you use the server number
+Yes. Out of the box, you can use :term:`URL` like http://server/phpMyAdmin/index.php?server=X&db=databas
+e&table=table&target=script. For ``server`` you use the server number
 which refers to the order of the server paragraph in
 :file:`config.inc.php`. Table and script parts are optional. If you want
-https://example.com/phpMyAdmin/database[/table][/script] :term:`URL`, you need to do some configuration. Following
-lines apply only for `Apache <https://httpd.apache.org/>`_ web server.
+http://server/phpMyAdmin/database[/table][/script] :term:`URL`, you need to do some configuration. Following
+lines apply only for `Apache <http://httpd.apache.org>`_ web server.
 First make sure, that you have enabled some features within global
-configuration. You need ``Options SymLinksIfOwnerMatch`` and ``AllowOverride
+configuration. You need ``Options FollowSymLinks`` and ``AllowOverride
 FileInfo`` enabled for directory where phpMyAdmin is installed and you
 need mod\_rewrite to be enabled. Then you just need to create
 following :term:`.htaccess` file in root folder of phpMyAdmin installation (don't
@@ -430,7 +438,7 @@ forget to change directory name inside of it):
 
 .. code-block:: apache
 
-
+    
     RewriteEngine On
     RewriteBase /path_to_phpMyAdmin
     RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)/([a-z_]+\.php)$ index.php?db=$1&table=$2&target=$3 [R]
@@ -448,7 +456,7 @@ following rewrite rule:
 
 .. code-block:: apache
 
-
+    
     RewriteEngine On
     RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
 
@@ -493,42 +501,34 @@ The default values for most Suhosin configuration options will work in
 most scenarios, however you might want to adjust at least following
 parameters:
 
-* `suhosin.request.max\_vars <https://suhosin.org/stories/configuration.html#suhosin-request-max-vars>`_ should
+* `suhosin.request.max\_vars <http://www.hardened-
+  php.net/suhosin/configuration.html#suhosin.request.max_vars>`_ should
   be increased (eg. 2048)
-* `suhosin.post.max\_vars <https://suhosin.org/stories/configuration.html#suhosin-post-max-vars>`_ should be
+* `suhosin.post.max\_vars <http://www.hardened-
+  php.net/suhosin/configuration.html#suhosin.post.max_vars>`_ should be
   increased (eg. 2048)
-* `suhosin.request.max\_array\_index\_length <https://suhosin.org/stories/configuration.html#suhosin-request-max-array-index-length>`_
+* `suhosin.request.max\_array\_index\_length <http://www.hardened-php.ne
+  t/suhosin/configuration.html#suhosin.request.max_array_index_length>`_
   should be increased (eg. 256)
-* `suhosin.post.max\_array\_index\_length <https://suhosin.org/stories/configuration.html#suhosin-post-max-array-index-length>`_
+* `suhosin.post.max\_array\_index\_length <http://www.hardened-php.net/s
+  uhosin/configuration.html#suhosin.post.max_array_index_length>`_
   should be increased (eg. 256)
-* `suhosin.request.max\_totalname\_length <https://suhosin.org/stories/configuration.html#suhosin-request-max-totalname-length>`_
+* `suhosin.request.max\_totalname\_length <http://www.hardened-php.net/s
+  uhosin/configuration.html#suhosin.request.max_totalname_length>`_
   should be increased (eg. 8192)
-* `suhosin.post.max\_totalname\_length <https://suhosin.org/stories/configuration.html#suhosin-post-max-totalname-length>`_ should be
+* `suhosin.post.max\_totalname\_length <http://www.hardened-php.net/suho
+  sin/configuration.html#suhosin.post.max_totalname_length>`_ should be
   increased (eg. 8192)
-* `suhosin.get.max\_value\_length <https://suhosin.org/stories/configuration.html#suhosin-get-max-value-length>`_
+* `suhosin.get.max\_value\_length <http://www.hardened-
+  php.net/suhosin/configuration.html#suhosin.get.max_value_length>`_
   should be increased (eg. 1024)
-* `suhosin.sql.bailout\_on\_error <https://suhosin.org/stories/configuration.html#suhosin-sql-bailout-on-error>`_
+* `suhosin.sql.bailout\_on\_error <http://www.hardened-
+  php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error>`_
   needs to be disabled (the default)
-* `suhosin.log.\* <https://suhosin.org/stories/configuration.html#logging-configuration>`_ should not
+* `suhosin.log.\* <http://www.hardened-
+  php.net/suhosin/configuration.html#logging_configuration>`_ should not
   include :term:`SQL`, otherwise you get big
   slowdown
-* `suhosin.sql.union <https://suhosin.org/stories/configuration.html#suhosin-
-  sql-union>`_ must be disabled (which is the default).
-* `suhosin.sql.multiselect <https://suhosin.org/stories/configuration.html#
-  suhosin-sql-multiselect>`_ must be disabled (which is the default).
-* `suhosin.sql.comment <https://suhosin.org/stories/configuration.html#suhosin-
-  sql-comment>`_ must be disabled (which is the default).
-
-To further improve security, we also recommend these modifications:
-
-* `suhosin.executor.include.max\_traversal <https://suhosin.org/stories/
-  configuration.html#suhosin-executor-include-max-traversal>`_ should be
-  enabled as a mitigation against local file inclusion attacks. We suggest
-  setting this to 2 as ``../`` is used with the ReCaptcha library.
-* `suhosin.cookie.encrypt <https://suhosin.org/stories/configuration.html#
-  suhosin-cookie-encrypt>`_ should be enabled.
-* `suhosin.executor.disable_emodifier <https://suhosin.org/stories/config
-  uration.html#suhosin-executor-disable-emodifier>`_ should be enabled.
 
 You can also disable the warning using the :config:option:`$cfg['SuhosinDisableWarning']`.
 
@@ -538,7 +538,7 @@ You can also disable the warning using the :config:option:`$cfg['SuhosinDisableW
 ------------------------------------------------------------------------------------------------------------------------------------
 
 Be sure that you have enabled ``SSLOptions`` and ``StdEnvVars`` in
-your Apache configuration.
+your Apache configuration. 
 
 .. seealso:: <http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions>
 
@@ -552,24 +552,24 @@ the set-cookie headers. Example from the Apache 2.2 documentation:
 
 .. code-block:: apache
 
-
+    
     ProxyPass /mirror/foo/ http://backend.example.com/
     ProxyPassReverse /mirror/foo/ http://backend.example.com/
     ProxyPassReverseCookieDomain backend.example.com public.example.com
     ProxyPassReverseCookiePath / /mirror/foo/
 
-Note: if the backend url looks like https://example.com/~user/phpmyadmin, the
+Note: if the backend url looks like http://host/~user/phpmyadmin, the
 tilde (~) must be url encoded as %7E in the ProxyPassReverse\* lines.
 This is not specific to phpmyadmin, it's just the behavior of Apache.
 
 .. code-block:: apache
 
-
+    
     ProxyPass /mirror/foo/ http://backend.example.com/~user/phpmyadmin
     ProxyPassReverse /mirror/foo/ http://backend.example.com/%7Euser/phpmyadmin
     ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo
 
-.. seealso:: <https://httpd.apache.org/docs/2.2/mod/mod_proxy.html>, :config:option:`$cfg['PmaAbsoluteUri']`
+.. seealso:: <http://httpd.apache.org/docs/2.2/mod/mod_proxy.html>
 
 .. _faq1_41:
 
@@ -590,18 +590,18 @@ some robots accessing your installation.
 
 .. code-block:: apache
 
-
+    
     RewriteEngine on
-
+    
     # Allow only GET and POST verbs
     RewriteCond %{REQUEST_METHOD} !^(GET|POST)$ [NC,OR]
-
+    
     # Ban Typical Vulnerability Scanners and others
     # Kick out Script Kiddies
     RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget).* [NC,OR]
     RewriteCond %{HTTP_USER_AGENT} ^.*(libwww-perl|curl|wget|python|nikto|wkito|pikto|scan|acunetix).* [NC,OR]
     RewriteCond %{HTTP_USER_AGENT} ^.*(winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner).* [NC,OR]
-
+    
     # Ban Search Engines, Crawlers to your administrative panel
     # No reasons to access from bots
     # Ultimately Better than the useless robots.txt
@@ -612,29 +612,10 @@ some robots accessing your installation.
 
 .. _faq1_43:
 
-1.43 Why can't I display the structure of my table containing hundreds of columns?
+1.43 Why can't I display the structure of my table containing hundreds of columns? 
 ----------------------------------------------------------------------------------
 
 Because your PHP's ``memory_limit`` is too low; adjust it in :file:`php.ini`.
-
-.. _faq1:44:
-
-1.44 How can I reduce the installed size of phpMyAdmin on disk?
----------------------------------------------------------------
-
-Some users have requested to be able to reduce the size of the phpMyAdmin installation.
-This is not recommended and could lead to confusion over missing features, but can be done.
-A list of files and corresponding functionality which degrade gracefully when removed include:
-
-* :file:`./libraries/tcpdf` folder (exporting to PDF)
-* :file:`./locale/` folder, or unused subfolders (interface translations)
-* Any unused themes in :file:`./themes/`
-* :file:`./js/jquery/src/` (included for licensing reasons)
-* :file:`./js/line_counts.php`
-* :file:`./doc/` (documentation)
-* :file:`./setup/` (setup script)
-* :file:`./examples/`
-* :file:`./sql/` (SQL scripts to configure advanced functionality)
 
 .. _faqconfig:
 
@@ -701,7 +682,7 @@ Here is a fix suggested by Brad Ummer:
   '0755').
 
 Have also a look at the `corresponding section of the MySQL
-documentation <https://dev.mysql.com/doc/en/can-not-connect-to-
+documentation <http://dev.mysql.com/doc/en/can-not-connect-to-
 server.html>`_.
 
 .. _faq2_4:
@@ -720,11 +701,8 @@ revision.
 2.5 Each time I want to insert or change a row or drop a database or a table, an error 404 (page not found) is displayed or, with HTTP or cookie authentication, I'm asked to log in again. What's wrong?
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Check your webserver setup if it correctly fills in either PHP_SELF or REQUEST_URI variables.
-
-If you are running phpMyAdmin behind reverse proxy, please set the
-:config:option:`$cfg['PmaAbsoluteUri']` directive in the phpMyAdmin
-configuration file to match your setup.
+Check the value you set for the :config:option:`$cfg['PmaAbsoluteUri']` directive in the phpMyAdmin
+configuration file.
 
 .. _faq2_6:
 
@@ -746,7 +724,7 @@ doesn't work in this configuration with port forwarding. If you enter
 -----------------------------
 
 Themes are configured with :config:option:`$cfg['ThemePath']`,
-:config:option:`$cfg['ThemeManager']` and :config:option:`$cfg['ThemeDefault']`.
+:config:option:`$cfg['ThemeManager']` and :config:option:`$cfg['ThemeDefault']`.  
 Under :config:option:`$cfg['ThemePath']`, you should not delete the
 directory ``pmahomme`` or its underlying structure, because this is the
 system theme used by phpMyAdmin. ``pmahomme`` contains all images and
@@ -790,7 +768,7 @@ Here are a few points to check:
 * In :file:`config.inc.php`, try to leave the :config:option:`$cfg['PmaAbsoluteUri']` directive empty. See also
   :ref:`faq4_7`.
 * Maybe you have a broken PHP installation or you need to upgrade your
-  Zend Optimizer. See <https://bugs.php.net/bug.php?id=31134>.
+  Zend Optimizer. See <http://bugs.php.net/bug.php?id=31134>.
 * If you are using Hardened PHP with the ini directive
   ``varfilter.max_request_variables`` set to the default (200) or
   another low value, you could get this error if your table has a high
@@ -810,8 +788,8 @@ Here are a few points to check:
 ---------------------------------
 
 To be able to see a progress bar during your uploads, your server must
-have the `APC <https://php.net/manual/en/book.apc.php>`_ extension, the
-`uploadprogress <https://pecl.php.net/package/uploadprogress>`_ one, or
+have the `APC <http://pecl.php.net/package/APC>`_ extension, the
+`uploadprogress <http://pecl.php.net/package/uploadprogress>`_ one, or
 you must be running PHP 5.4.0 or higher. Moreover, the JSON extension
 has to be enabled in your PHP.
 
@@ -820,7 +798,7 @@ If using APC, you must set ``apc.rfc1867`` to ``on`` in your :file:`php.ini`.
 If using PHP 5.4.0 or higher, you must set
 ``session.upload_progress.enabled`` to ``1`` in your :file:`php.ini`. However,
 starting from phpMyAdmin version 4.0.4, session-based upload progress has
-been temporarily deactivated due to its problematic behavior.
+been temporarily deactivated due to its problematic behavior. 
 
 .. seealso:: :rfc:`1867`
 
@@ -855,7 +833,7 @@ dump, you have to use another way.
 3.3 With InnoDB tables, I lose foreign key relationships when I rename a table or a column.
 -------------------------------------------------------------------------------------------
 
-This is an InnoDB bug, see <https://bugs.mysql.com/bug.php?id=21704>.
+This is an InnoDB bug, see <http://bugs.mysql.com/bug.php?id=21704>.
 
 .. _faq3_4:
 
@@ -867,7 +845,7 @@ comments like this:
 
 .. code-block:: mysql
 
-
+    
     -- MySQL dump 8.22
     --
     -- Host: localhost Database: database
@@ -895,8 +873,13 @@ TableSeparator or disabling that feature.
 
 .. _faq3_6:
 
-3.6 (withdrawn).
------------------
+3.6 What is currently not supported in phpMyAdmin about InnoDB?
+---------------------------------------------------------------
+
+In Relation view, being able to choose a table in another database, or
+having more than one index column in the foreign key. In Query-by-
+example (Query), automatic generation of the query LEFT JOIN from the
+foreign table.
 
 .. _faq3_7:
 
@@ -921,7 +904,7 @@ just put your own input-elements inside. If you use a custom submit
 input field, the form will submit itself to the displaying page again,
 where you can validate the $HTTP\_POST\_VARS in a transformation. For
 a tutorial on how to effectively use transformations, see our `Link
-section <https://www.phpmyadmin.net/docs/>`_ on the
+section <http://www.phpmyadmin.net/home_page/docs.php>`_ on the
 official phpMyAdmin-homepage.
 
 .. _faq3_9:
@@ -931,7 +914,7 @@ official phpMyAdmin-homepage.
 
 When MySQL is running in ANSI-compatibility mode, there are some major
 differences in how :term:`SQL` is structured (see
-<https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_ansi>). Most important of all, the
+<http://dev.mysql.com/doc/mysql/en/ansi-mode.html>). Most important of all, the
 quote-character (") is interpreted as an identifier quote character and not as
 a string quote character, which makes many internal phpMyAdmin operations into
 invalid :term:`SQL` statements. There is no
@@ -955,9 +938,6 @@ phpMyAdmin uses a quick method to get the row count, and this method only
 returns an approximate count in the case of InnoDB tables. See
 :config:option:`$cfg['MaxExactCount']` for a way to modify those results, but
 this could have a serious impact on performance.
-However, one can easily replace the approximate row count with exact count by
-simply clicking on the approximate count. This can also be done for all tables
-at once by clicking on the rows sum displayed at the bottom.
 
 .. _faq3_12:
 
@@ -1018,14 +998,6 @@ for the appropriate type. If you know you will be adding larger items
 to that column then you should manually adjust the column sizes
 accordingly. This is done for the sake of efficiency.
 
-.. _faq3_20:
-
-3.20 After upgrading, some bookmarks are gone or their content cannot be shown.
--------------------------------------------------------------------------------
-
-At some point, the character set used to store bookmark content has changed.
-It's better to recreate your bookmark from the newer phpMyAdmin version.
-
 .. _faqmultiuser:
 
 ISPs, multi-user installations
@@ -1039,7 +1011,7 @@ ISPs, multi-user installations
 Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your
 users. The development of this feature was kindly sponsored by NetCologne GmbH.
 This requires a properly setup MySQL user management and phpMyAdmin
-:term:`HTTP` or cookie authentication.
+:term:`HTTP` or cookie authentication. 
 
 .. seealso:: :ref:`authentication_modes`
 
@@ -1052,8 +1024,8 @@ This depends on your system. If you're running a server which cannot be
 accessed by other people, it's sufficient to use the directory protection
 bundled with your webserver (with Apache you can use :term:`.htaccess` files,
 for example). If other people have telnet access to your server, you should use
-phpMyAdmin's :term:`HTTP` or cookie authentication features.
-
+phpMyAdmin's :term:`HTTP` or cookie authentication features.  
+    
 Suggestions:
 
 * Your :file:`config.inc.php` file should be ``chmod 660``.
@@ -1114,7 +1086,7 @@ network :term:`IP` blocks.
 
 .. code-block:: php
 
-
+    
     //block root from logging in except from the private networks
     $cfg['Servers'][$i]['AllowDeny']['order'] = 'deny,allow';
     $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
@@ -1231,7 +1203,7 @@ Mozilla versions.
 -------------------------------------------------------------------------------------------------------------------------------
 
 This is a Mozilla bug (see bug #26882 at `BugZilla
-<https://bugzilla.mozilla.org/>`_).
+<http://bugzilla.mozilla.org/>`_).
 
 .. _faq5_10:
 
@@ -1395,30 +1367,27 @@ re–written, if possible it is suggested that you upgrade to take
 advantage of the new features.  For additional help on this subject,
 look for the word "upload" in this document.
 
-Note: For errors while importing of dumps exported from older MySQL versions to newer MySQL versions,
-please check :ref:`faq6_41`.
-
 .. _faq6_6:
 
 6.6 How can I use the relation table in Query-by-example?
 ---------------------------------------------------------
 
 Here is an example with the tables persons, towns and countries, all
-located in the database "mydb". If you don't have a ``pma__relation``
+located in the database mydb. If you don't have a ``pma__relation``
 table, create it as explained in the configuration section. Then
 create the example tables:
 
 .. code-block:: mysql
 
-
+    
     CREATE TABLE REL_countries (
     country_code char(1) NOT NULL default '',
     description varchar(10) NOT NULL default '',
     PRIMARY KEY (country_code)
     ) TYPE=MyISAM;
-
+    
     INSERT INTO REL_countries VALUES ('C', 'Canada');
-
+    
     CREATE TABLE REL_persons (
     id tinyint(4) NOT NULL auto_increment,
     person_name varchar(32) NOT NULL default '',
@@ -1426,26 +1395,24 @@ create the example tables:
     country_code char(1) NOT NULL default '',
     PRIMARY KEY (id)
     ) TYPE=MyISAM;
-
+    
     INSERT INTO REL_persons VALUES (11, 'Marc', 'S', '');
     INSERT INTO REL_persons VALUES (15, 'Paul', 'S', 'C');
-
+    
     CREATE TABLE REL_towns (
     town_code varchar(5) NOT NULL default '0',
     description varchar(30) NOT NULL default '',
     PRIMARY KEY (town_code)
     ) TYPE=MyISAM;
-
+    
     INSERT INTO REL_towns VALUES ('S', 'Sherbrooke');
     INSERT INTO REL_towns VALUES ('M', 'Montréal');
 
 To setup appropriate links and display information:
 
 * on table "REL\_persons" click Structure, then Relation view
-* for "town\_code", choose from dropdowns, "mydb", "REL\_towns", "code"
-  for foreign database, table and column respectively
-* for "country\_code", choose  from dropdowns, "mydb", "REL\_countries",
-  "country\_code" for foreign database, table and column respectively
+* in Links, for "town\_code" choose "REL\_towns->code"
+* in Links, for "country\_code" choose "REL\_countries->country\_code"
 * on table "REL\_towns" click Structure, then Relation view
 * in "Choose column to display", choose "description"
 * repeat the two previous steps for table "REL\_countries"
@@ -1498,9 +1465,9 @@ schema layout. Which tables will go on which pages?
   fit the page. When initially placing tables on the page, just pick any
   coordinates -- say, 50x50. After clicking Save, you can then use the
   :ref:`wysiwyg` to position the element correctly.
-* When you'd like to look at your :term:`PDF`, first be sure to click the Save
-  button beneath the list of tables and coordinates, to save any changes you
-  made there. Then scroll all the way down, select the :term:`PDF` options you
+* When you'd like to look at your :term:`PDF`, first be sure to click the Save 
+  button beneath the list of tables and coordinates, to save any changes you 
+  made there. Then scroll all the way down, select the :term:`PDF` options you 
   want, and click Go.
 * Internet Explorer for Windows may suggest an incorrect filename when
   you try to save a generated :term:`PDF`.
@@ -1515,7 +1482,7 @@ schema layout. Which tables will go on which pages?
 ---------------------------------------------------------
 
 No, it's MySQL that is doing `silent column type changing
-<https://dev.mysql.com/doc/en/silent-column-changes.html>`_.
+<http://dev.mysql.com/doc/en/silent-column-changes.html>`_.
 
 .. _underscore:
 
@@ -1543,7 +1510,7 @@ It means "average".
 **Structure:**
 
 * "Add DROP TABLE" will add a line telling MySQL to `drop the table
-  <https://dev.mysql.com/doc/mysql/en/drop-table.html>`_, if it already
+  <http://dev.mysql.com/doc/mysql/en/drop-table.html>`_, if it already
   exists during the import. It does NOT drop the table after your
   export, it only affects the import file.
 * "If Not Exists" will only create the table if it doesn't exist.
@@ -1554,7 +1521,7 @@ It means "average".
 * "Enclose table and column names with backquotes" ensures that column
   and table names formed with special characters are protected.
 * "Add into comments" includes column comments, relations, and MIME
-  types set in the pmadb in the dump as :term:`SQL` comments
+  types set in the pmadb in the dump as :term:`SQL` comments 
   (*/\* xxx \*/*).
 
 **Data:**
@@ -1564,10 +1531,10 @@ It means "average".
 * "Extended inserts" provides a shorter dump file by using only once the
   INSERT verb and the table name.
 * "Delayed inserts" are best explained in the `MySQL manual - INSERT DELAYED Syntax
-  <https://dev.mysql.com/doc/mysql/en/insert-delayed.html>`_.
+  <http://dev.mysql.com/doc/mysql/en/insert-delayed.html>`_.
 * "Ignore inserts" treats errors as a warning instead. Again, more info
   is provided in the `MySQL manual - INSERT Syntax
-  <https://dev.mysql.com/doc/mysql/en/insert.html>`_, but basically with
+  <http://dev.mysql.com/doc/mysql/en/insert.html>`_, but basically with
   this selected, invalid values are adjusted and inserted rather than
   causing the entire statement to fail.
 
@@ -1583,8 +1550,21 @@ work with it, nor delete it.
 
 .. _faqsqlvalidator:
 
-6.14 (withdrawn).
------------------
+6.14 How do I set up the SQL Validator?
+---------------------------------------
+
+To use SQL Validator, you need PHP with :term:`XML`, :term:`PCRE` and
+:term:`PEAR` support. In addition you need a :term:`SOAP` support, either as a
+PHP extension or as a PEAR SOAP module.
+
+To install :term:`PEAR` :term:`SOAP` module, run :command:`pear install
+Net_Socket Net_URL HTTP_Request Mail_Mime Net_DIME SOAP` to get the necessary
+:term:`PEAR` modules for usage.
+
+If you use the Validator, you should be aware that any :term:`SQL` statement
+you submit will be stored anonymously (database/table/column names, strings,
+numbers replaced with generic values). The Mimer :term:`SQL` Validator itself,
+is © 2001 Upright Database Technology. We utilize it as free SOAP service.
 
 .. _faq6_15:
 
@@ -1616,15 +1596,15 @@ transformations on them. Otherwise you could just put a comment on the
 column. Because entering your own mimetype will cause serious syntax
 checking issues and validation, this introduces a high-risk false-
 user-input situation. Instead you have to initialize mimetypes using
-functions or empty mimetype definitions.
+functions or empty mimetype definitions. 
 
 Plus, you have a whole overview of available mimetypes. Who knows all those
 mimetypes by heart so he/she can enter it at will?
 
 .. _faqbookmark:
 
-6.18 Bookmarks: Where can I store bookmarks? Why can't I see any bookmarks below the query box? What are these variables for?
------------------------------------------------------------------------------------------------------------------------------
+6.18 Bookmarks: Where can I store bookmarks? Why can't I see any bookmarks below the query box? What is this variable for?
+--------------------------------------------------------------------------------------------------------------------------
 
 Any query you have executed can be stored as a bookmark on the page
 where the results are displayed. You will find a button labeled
@@ -1633,50 +1613,58 @@ stored a bookmark, it is related to the database you run the query on.
 You can now access a bookmark dropdown on each page, the query box
 appears on for that database.
 
-You can also have, inside the query, placeholders for variables.
-This is done by inserting into the query SQL comments between ``/*`` and
-``*/``. Inside the comments, the special strings ``[VARIABLE{variable-number}]`` is used.
-Be aware that the whole query minus the SQL comments must be
+You can also have, inside the query, a placeholder for a variable.
+This is done by inserting into the query a SQL comment between ``/*`` and 
+``*/``. Inside the comment, the special string ``[VARIABLE]`` is used. 
+Be aware that the whole query minus the SQL comment must be
 valid by itself, otherwise you won't be able to store it as a bookmark.
 
-When you execute the bookmark, everything typed into the *Variables*
-input boxes on the query box page will replace the strings ``/*[VARIABLE{variable-number}]*/`` in
+When you execute the bookmark, everything typed into the *value* 
+input box on the query box page will replace the string ``/*[VARIABLE]*/`` in 
 your stored query.
 
-Also remember, that everything else inside the ``/*[VARIABLE{variable-number}]*/`` string for
+Also remember, that everything else inside the ``/*[VARIABLE]*/`` string for
 your query will remain the way it is, but will be stripped of the ``/**/``
 chars. So you can use:
 
 .. code-block:: mysql
 
-    /*, [VARIABLE1] AS myname */
-
-which will be expanded to
+    /*, [VARIABLE] AS myname */
+    
+which will be expanded to 
 
 .. code-block:: mysql
 
-    , VARIABLE1 as myname
-
-in your query, where VARIABLE1 is the string you entered in the Variable 1 input box.
+    , VARIABLE as myname
+    
+in your query, where VARIABLE is the string you entered in the input box. If an
+empty string is provided, no replacements are made. 
 
 A more complex example. Say you have stored
-this query:
+this query: 
 
 .. code-block:: mysql
 
-    SELECT Name, Address FROM addresses WHERE 1 /* AND Name LIKE '%[VARIABLE1]%' */
-
+    SELECT Name, Address FROM addresses WHERE 1 /* AND Name LIKE '%[VARIABLE]%' */
+    
 Say, you now enter "phpMyAdmin" as the variable for the stored query, the full
-query will be:
+query will be: 
 
 .. code-block:: mysql
 
     SELECT Name, Address FROM addresses WHERE 1 AND Name LIKE '%phpMyAdmin%'
 
+You can use multiple occurrences of ``/*[VARIABLE]*/`` in a single query
+(that is, multiple occurrences of the *same* variable). 
+
 **NOTE THE ABSENCE OF SPACES** inside the ``/**/`` construct. Any spaces
 inserted there will be later also inserted as spaces in your query and may lead
 to unexpected results especially when using the variable expansion inside of a
-"LIKE ''" expression.
+"LIKE ''" expression. 
+
+Your initial query which is going to be stored as a bookmark has to yield at
+least one result row so you can store the bookmark. You may have that to work
+around using well positioned ``/**/`` comments.
 
 .. _faq6_19:
 
@@ -1689,7 +1677,7 @@ have table exported in file :file:`table.tex`):
 
 .. code-block:: latex
 
-
+    
     \documentclass{article} % or any class you want
     \usepackage{longtable}  % for displaying table
     \begin{document}        % start of document
@@ -1706,7 +1694,7 @@ DATABASES, LOCK TABLES. Those privileges also enable users to see all the
 database names. So if your users do not need those privileges, you can remove
 them and their databases list will shorten.
 
-.. seealso:: <https://bugs.mysql.com/179>
+.. seealso:: <http://bugs.mysql.com/179>
 
 .. _faq6_21:
 
@@ -1739,7 +1727,7 @@ public bookmark, it will be executed.
 -----------------------------------------------------------------
 
 You can use :term:`CSV` for Microsoft Excel,
-which works out of the box.
+which works out of the box. 
 
 .. versionchanged:: 3.4.5
     Since phpMyAdmin 3.4.5 support for direct export to Microsoft Excel version
@@ -1773,7 +1761,7 @@ in Browse mode or on the Structure page.
 -----------------------------------
 
 In all places where phpMyAdmin accepts format strings, you can use
-``@VARIABLE@`` expansion and `strftime <https://php.net/strftime>`_
+``@VARIABLE@`` expansion and `strftime <http://php.net/strftime>`_
 format strings. The expanded variables depend on a context (for
 example, if you haven't chosen a table, you can not get the table
 name), but the following variables can be used:
@@ -1829,13 +1817,13 @@ other.
 Not every table can be put to the chart. Only tables with one, two or
 three columns can be visualised as a chart. Moreover the table must be
 in a special format for chart script to understand it. Currently
-supported formats can be found in the `wiki <https://wiki.phpmyadmin.ne
+supported formats can be found in the `wiki <http://wiki.phpmyadmin.ne
 t/pma/Charts#Data_formats_for_query_results_chart>`_.
 
 .. _faq6_30:
 
-6.30 Import: How can I import ESRI Shapefiles?
-----------------------------------------------
+6.30 Import: How can I import ESRI Shapefiles
+---------------------------------------------
 
 An ESRI Shapefile is actually a set of several files, where .shp file
 contains geometry data and .dbf file contains data related to those
@@ -1879,7 +1867,7 @@ The Zoom search feature is an alternative to table search feature. It allows
 you to explore a table by representing its data in a scatter plot. You can
 locate this feature by selecting a table and clicking the :guilabel:`Search`
 tab. One of the sub-tabs in the :guilabel:`Table Search` page is
-:guilabel:`Zoom Search`.
+:guilabel:`Zoom Search`.  
 
 Consider the table REL\_persons in :ref:`faq6_6` for
 an example. To use zoom search, two columns need to be selected, for
@@ -1887,7 +1875,7 @@ example, id and town\_code. The id values will be represented on one
 axis and town\_code values on the other axis. Each row will be
 represented as a point in a scatter plot based on its id and
 town\_code. You can include two additional search criteria apart from
-the two fields to display.
+the two fields to display. 
 
 You can choose which field should be
 displayed as label for each point. If a display column has been set
@@ -1895,12 +1883,12 @@ for the table (see :ref:`faqdisplay`), it is taken as the label unless
 you specify otherwise. You can also select the maximum number of rows
 you want to be displayed in the plot by specifing it in the 'Max rows
 to plot' field. Once you have decided over your criteria, click 'Go'
-to display the plot.
+to display the plot. 
 
 After the plot is generated, you can use the
 mousewheel to zoom in and out of the plot. In addition, panning
 feature is enabled to navigate through the plot. You can zoom-in to a
-certain level of detail and use panning to locate your area of
+certail level of detail and use panning to locate your area of
 interest. Clicking on a point opens a dialogue box, displaying field
 values of the data row represented by the point. You can edit the
 values if required and click on submit to issue an update query. Basic
@@ -1920,216 +1908,6 @@ next to the column name, when the tooltip tells you to do so. This
 will show you an input box with the column name. You may right-click
 the column name within this input box to copy it to your clipboard.
 
-.. _faq6_34:
-
-6.34 How can I use the Favorite Tables feature?
----------------------------------------------------------
-
-Favorite Tables feature is very much similar to Recent Tables feature.
-It allows you to add a shortcut for the frequently used tables of any
-database in the navigation panel . You can easily navigate to any table
-in the list by simply choosing it from the list. These tables are stored
-in your browser's local storage if you have not configured your
-`phpMyAdmin Configuration Storage`. Otherwise these entries are stored in
-`phpMyAdmin Configuration Storage`.
-
-IMPORTANT: In absence of `phpMyAdmin Configuration Storage`, your Favorite
-tables may be different in different browsers based on your different
-selections in them.
-
-To add a table to Favorite list simply click on the `Gray` star in front
-of a table name in the list of tables of a Database and wait until it
-turns to `Yellow`.
-To remove a table from list, simply click on the `Yellow` star and
-wait until it turns `Gray` again.
-
-Using :config:option:`$cfg['NumFavoriteTables']` in your :file:`config.inc.php`
-file, you can define the  maximum number of favorite tables shown in the
-navigation panel. Its default value is `10`.
-
-.. _faq6_35:
-
-6.35 How can I use the Range search feature?
----------------------------------------------------------
-
-With the help of range search feature, one can specify a range of values for
-particular column(s) while performing search operation on a table from the `Search`
-tab.
-
-To use this feature simply click on the `BETWEEN` or `NOT BETWEEN` operators
-from the operator select list in front of the column name. On choosing one of the
-above options, a dialog box will show up asking for the `Minimum` and `Maximum`
-value for that column. Only the specified range of values will be included
-in case of `BETWEEN` and excluded in case of `NOT BETWEEN` from the final results.
-
-Note: The Range search feature will work only `Numeric` and `Date` data type columns.
-
-.. _faq6_36:
-
-6.36 What is Central columns and How can I use this feature?
-------------------------------------------------------------
-
-As the name suggests, the Central columns feature enables to maintain a central list of
-columns per database to avoid similar name for the same data element and bring consistency
-of data type for the same data element. You can use the central list of columns to
-add an element to any table structure in that database which will save from writing
-similar column name and column definition.
-
-To add a column to central list, go to table structure page, check the columns you want
-to include and then simply click on "Add to central columns". If you want to add all
-unique columns from more than one table from a database then go to database structure page,
-check the tables you want to include and then select "Add columns to central list".
-
-To remove a column from central list, go to Table structure page, check the columns you want
-to remove and then simply click on "Remove from central columns". If you want to remove all
-columns from more than one tables from a database then go to database structure page,
-check the tables you want to include and then select "Remove columns from central list".
-
-To view and manage the central list, select the database you want to manage central columns
-for then from the top menu click on "Central columns". You will be taken to a page where
-you will have options to edit, delete or add new columns to central list.
-
-.. _faq6_37:
-
-6.37 How can I use Improve Table structure feature?
----------------------------------------------------------
-
-Improve table structure feature helps to bring the table structure upto
-Third Normal Form. A wizard is presented to user which asks questions about the
-elements during the various steps for normalization and a new structure is proposed
-accordingly to bring the table into the First/Second/Third Normal form.
-On startup of the wizard, user gets to select upto what normal form they want to
-normalize the table structure.
-
-Here is an example table which you can use to test all of the three First, Second and
-Third Normal Form.
-
-.. code-block:: mysql
-
-    CREATE TABLE `VetOffice` (
-     `petName` varchar(64) NOT NULL,
-     `petBreed` varchar(64) NOT NULL,
-     `petType` varchar(64) NOT NULL,
-     `petDOB` date NOT NULL,
-     `ownerLastName` varchar(64) NOT NULL,
-     `ownerFirstName` varchar(64) NOT NULL,
-     `ownerPhone1` int(12) NOT NULL,
-     `ownerPhone2` int(12) NOT NULL,
-     `ownerEmail` varchar(64) NOT NULL,
-    );
-
-The above table is not in First normal Form as no primary key exists. Primary key
-is supposed to be (`petName`,`ownerLastName`,`ownerFirstName`) . If the primary key
-is chosen as suggested the resultant table won't be in Second as well as Third Normal
-form as the following dependencies exists.
-
-.. code-block:: mysql
-
-    (OwnerLastName, OwnerFirstName) -> OwnerEmail
-    (OwnerLastName, OwnerFirstName) -> OwnerPhone
-    PetBreed -> PetType
-
-Which says, OwnerEmail depends on OwnerLastName and OwnerFirstName.
-OwnerPhone depends on OwnerLastName and OwnerFirstName.
-PetType depends on PetBreed.
-
-.. _faq6_38:
-
-6.38 How can I reassign auto-incremented values? 
-------------------------------------------------
-
-Some users prefer their AUTO_INCREMENT values to be consecutive; this is not
-always the case after row deletion.
-
-Here are the steps to accomplish this. These are manual steps because they
-involve a manual verification at one point.
-
-* Ensure that you have exclusive access to the table to rearrange
-
-* On your primary key column (i.e. id), remove the AUTO_INCREMENT setting
-
-* Delete your primary key in Structure > indexes
-
-* Create a new column future_id as primary key, AUTO_INCREMENT
-
-* Browse your table and verify that the new increments correspond to what
-  you're expecting
-
-* Drop your old id column
-
-* Rename the future_id column to id
-
-* Move the new id column via Structure > Move columns
-
-.. _faq6_39:
-
-6.39 What is the "Adjust privileges" option when renaming, copying, or moving a database, table, column, or procedure?
-----------------------------------------------------------------------------------------------------------------------
-
-When renaming/copying/moving a database/table/column/procedure,
-MySQL does not adjust the original privileges relating to these objects
-on its own. By selecting this option, phpMyAdmin will adjust the privilege
-table so that users have the same privileges on the new items.
-
-For example: A user 'bob'@'localhost' has a 'SELECT' privilege on a
-column named 'id'. Now, if this column is renamed to 'id_new', MySQL,
-on its own, would **not** adjust the column privileges to the new column name.
-phpMyAdmin can make this adjustment for you automatically.
-
-Notes:
-
-* While adjusting privileges for a database, the privileges of all
-  database-related elements (tables, columns and procedures) are also adjusted
-  to the database's new name.
-
-* Similarly, while adjusting privileges for a table, the privileges of all
-  the columns inside the new table are also adjusted.
-
-* While adjusting privileges, the user performing the operation **must** have the following
-  privileges:
-
-  * SELECT, INSERT, UPDATE, DELETE privileges on following tables:
-    `mysql`.`db`, `mysql`.`columns_priv`, `mysql`.`tables_priv`, `mysql`.`procs_priv`
-  * FLUSH privilege (GLOBAL)
-
-Thus, if you want to replicate the database/table/column/procedure as it is
-while renaming/copying/moving these objects, make sure you have checked this option.
-
-.. _faq6_40:
-
-6.40 I see "Bind parameters" checkbox in the "SQL" page. How do I write parameterized SQL queries?
---------------------------------------------------------------------------------------------------
-
-From version 4.5, phpMyAdmin allows users to execute parameterized queries in the "SQL" page.
-Parameters should be prefixed with a colon(:) and when the "Bind parameters" checkbox is checked
-these parameters will be identified and input fields for these parameters will be presented.
-Values entered in these field will be substituted in the query before being executed.
-
-.. _faq6_41:
-
-6.41 I get import errors while importing the dumps exported from older MySQL versions (pre-5.7.6) into newer MySQL versions (5.7.7+), but they work fine when imported back on same older versions ?
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-If you get errors like *#1031 - Table storage engine for 'table_name' doesn't have this option*
-while importing the dumps exported from pre-5.7.7 MySQL servers into new MySQL server versions 5.7.7+,
-it might be because ROW_FORMAT=FIXED is not supported with InnoDB tables. Moreover, the value of
-`innodb_strict_mode <http://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_strict_mode>`_ would define if this would be reported as a warning or as an error.
-
-Since MySQL version 5.7.9, the default value for `innodb_strict_mode` is `ON` and thus would generate
-an error when such a CREATE TABLE or ALTER TABLE statement is encountered.
-
-There are two ways of preventing such errors while importing:
-
-* Change the value of `innodb_strict_mode` to `OFF` before starting the import and turn it `ON` after
-  the import is successfully completed.
-* This can be achieved in two ways:
-
-  * Go to 'Variables' page and edit the value of `innodb_strict_mode`
-  * Run the query : `SET GLOBAL `innodb_strict_mode` = '[value]'`
-
-After the import is done, it is suggested that the value of `innodb_strict_mode` should be reset to the
-original value.
-
 .. _faqproject:
 
 phpMyAdmin project
@@ -2140,7 +1918,9 @@ phpMyAdmin project
 7.1 I have found a bug. How do I inform developers?
 ---------------------------------------------------
 
-Our issues tracker is located at <https://github.com/phpmyadmin/phpmyadmin/issues>.
+Our Bug Tracker is located at <http://sf.net/projects/phpmyadmin/> under the
+Bugs section. But please first discuss your bug with other users:
+<https://sourceforge.net/projects/phpmyadmin/forums>.
 
 .. _faq7_2:
 
@@ -2149,9 +1929,9 @@ Our issues tracker is located at <https://github.com/phpmyadmin/phpmyadmin/issue
 
 Translations are very welcome and all you need to have are the
 language skills. The easiest way is to use our `online translation
-service <https://hosted.weblate.org/projects/phpmyadmin/>`_. You can check
+service <https://l10n.cihar.com/projects/phpmyadmin/>`_. You can check
 out all the possibilities to translate in the `translate section on
-our website <https://www.phpmyadmin.net/translate/>`_.
+our website <http://www.phpmyadmin.net/home_page/translate.php>`_.
 
 .. _faq7_3:
 
@@ -2161,7 +1941,7 @@ our website <https://www.phpmyadmin.net/translate/>`_.
 We welcome every contribution to the development of phpMyAdmin. You
 can check out all the possibilities to contribute in the `contribute
 section on our website
-<https://www.phpmyadmin.net/contribute/>`_.
+<http://www.phpmyadmin.net/home_page/improve.php>`_.
 
 .. seealso:: :ref:`developers`
 
@@ -2175,7 +1955,7 @@ Security
 8.1 Where can I get information about the security alerts issued for phpMyAdmin?
 --------------------------------------------------------------------------------
 
-Please refer to <https://www.phpmyadmin.net/security/>.
+Please refer to <http://www.phpmyadmin.net/home_page/security.php>.
 
 .. _faq8_2:
 
@@ -2204,13 +1984,6 @@ logs. Currently there are two variables available:
 You can then use any log analyzing tools to detect possible break-in
 attempts.
 
-.. _faq8_3:
-
-8.3 Why are there path disclosures when directly loading certain files?
------------------------------------------------------------------------
-
-This is a server configuration problem. Never enable ``display_errors`` on a production site.
-
 .. _faqsynchronization:
 
 Synchronization
@@ -2218,11 +1991,11 @@ Synchronization
 
 .. _faq9_1:
 
-9.1 (withdrawn).
+9.1 (withdrawn). 
 ----------------
 
 .. _faq9_2:
 
-9.2 (withdrawn).
+9.2 (withdrawn). 
 ----------------
 

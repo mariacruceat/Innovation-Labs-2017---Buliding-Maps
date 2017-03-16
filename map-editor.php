@@ -9,13 +9,13 @@
         <?php require_once('includes/header.php');?>
         <script type="application/javascript" src="js/graph.js"></script>
         <script type="application/javascript" src="js/editor.js"></script>
-        <link rel="stylesheet" type="text/stylesheet" href="stylesheets/editor.css"/>
+        <link rel="stylesheet" type="text/css" href="stylesheets/editor.css"/>
     </head>
     <body>
         <div class="ui padded grid">
             <div class="eight wide column">
                 <div id="floorplan-container">
-
+                    
                 </div>
             </div>
             <div class="eight wide column">

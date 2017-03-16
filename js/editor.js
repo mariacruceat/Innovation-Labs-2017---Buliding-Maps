@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#floorplan-container').load('svg/testing/floorplan.svg', function() {
         //Constant values
-        $('#floorplan-container').append('<div id="floorplan-catcher"></div>');
+
         //Waypoints list
         var waypoints = {};
 
@@ -55,6 +55,7 @@ $(document).ready(function() {
         });
 
         //Listener for click on image wrapper to get pos of cursor
+        //TODO:
         $('#floorplan-catcher').mousedown(function(e) {
             console.log('x: ' + e.offsetX + ' , y:' + e.offsetY) + '<br/>';
             $(document.createElementNS('http://www.w3.org/2000/svg', 'ellipse')).attr({

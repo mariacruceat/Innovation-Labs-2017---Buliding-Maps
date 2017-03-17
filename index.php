@@ -32,7 +32,7 @@
 								if (startVal != undefined
 										&& destVal != undefined) {
 									var link = document.createElement('a');
-									link.href = "map.html?map=Waypoints&start="
+									link.href = "map.php?map=Waypoints&start="
 											+ startVal + "&dest=" + destVal;
 									document.body.appendChild(link);
 									link.click();
@@ -49,9 +49,6 @@
 			});
 </script>
 <title>Welcome</title>
-<meta charset="utf-8" />
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
 body {
 	text-align: center;

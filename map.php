@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require_once('/includes/header.php');?>
+        <?php require_once('includes/header.php');?>
         <script type="application/javascript" src="js/waypoints.js"></script>
         <script type="application/javascript" src="js/graph.js"></script>
         <script src="addons/shake.js"></script>

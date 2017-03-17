@@ -68,9 +68,6 @@ $(document).ready(function() {
         })
 
         $('#testBtn').on('click', function() {
-            var text = $('#manualPaths').val();
-            if (text != '')
-                waypoints = JSON.parse(text);
             //Generate a random path from wp1 to wp9
 
             //Create new instance of Graph.js

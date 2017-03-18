@@ -1,0 +1,3 @@
+
+[09:03 - 16:03:17 ip:::1] Warning (2): require_once(/includes/header.php): failed to open stream: No such file or directory ( in C:\Users\Dragos\OneDrive\Programming projects\Web\Innovation-Labs-2017---Buliding-Maps\map-editor.php at line 9  )
+[07:03 - 17:03:17 ip:::1] Warning (2): require_once(/includes/header.php): failed to open stream: No such file or directory ( in C:\Users\Dragos\OneDrive\Programming projects\Web\Innovation-Labs-2017---Buliding-Maps\map.php at line 8  )

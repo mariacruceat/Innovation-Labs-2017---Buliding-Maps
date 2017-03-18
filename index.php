@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include_once('includes\header.php'); ?>
+	<?php include_once('includes/header.php'); ?>
 <script>
 	var startVal;
 	var destVal;
